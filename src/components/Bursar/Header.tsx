@@ -32,7 +32,7 @@ const Header = () => {
               <p className="text-sm font-medium text-gray-600 capitalize">{user?.role}</p>
             </div>
           </div>
-            <div className="sm:flex items-center sm:h-full">
+            <div className="sm:flex items-center sm:h-full flex justify-center w-full sm:w-auto">
                 <button className="border-2 border-lightBlue-600  bg-lightBlue-600 text-white transform transition-all flex rounded-lg px-6 py-2 hover:scale-105 hover:text-lightBlue-600 hover:bg-white">
                     Edit
                     <PencilAltIcon className="w-6 h-6 ml-3" />
