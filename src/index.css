@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: Inter;
+    src: url(./Inter-Regular.ttf);
+}
+@font-face {
+    font-family: SSPro;
+    src: url(./SourceSansPro-Regular.ttf);
+}
+.font-inter {
+    font-family: "Inter", sans-serif;
+}
+.font-sspro {
+    font-family: "SSPro", sans-serif;
+}
+.start_trading {
+    width: 484.13px;
+    height: 508.59px;
+    border-radius: 101.922px;
+}
