@@ -37,11 +37,11 @@ export default function Layout({ children, page }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const logOut = (e: any) => {
     e.preventDefault();
-    localStorage.removeItem("ET_token");
+    localStorage.removeItem("crescent_token");
     alert("log out successful");
     window.location.href = "/login";
   };
-  // const user:{fullName: any, image: any, email: any} = jwtDecode(localStorage?.getItem("ET_token"))
+  // const user:{fullName: any, image: any, email: any} = jwtDecode(localStorage?.getItem("crescent_token"))
   return (
     <div className="flex h-screen overflow-hidden bg-gray-100">
       <Transition.Root show={sidebarOpen} as={Fragment}>
@@ -88,7 +88,7 @@ export default function Layout({ children, page }) {
                     onClick={() => setSidebarOpen(false)}
                   >
                     <span className="sr-only">Close sidebar</span>
-                    <XIcon className="w-6 h-6 text-lightBlue-900" aria-hidden="true" />
+                    <XIcon className="w-6 h-6 text-green-900" aria-hidden="true" />
                   </button>
                 </div>
               </Transition.Child>
@@ -107,8 +107,8 @@ export default function Layout({ children, page }) {
               <img className="object-contain object-center w-40 h-40 mx-auto transition-all transform rounded-full hover:scale-110 hover:-translate-y-3" src={"user?.image"} alt="" />
             </div>
             <div className="mt-4 text-center ">
-              <p className="text-xl font-bold text-lightBlue-900 ">{"user?.fullName"}</p>
-              <p className="text-sm font-medium text-lightBlue-900">{"user?.email"}</p>
+              <p className="text-xl font-bold text-green-900 ">{"user?.fullName"}</p>
+              <p className="text-sm font-medium text-green-900">{"user?.email"}</p>
             </div>
           </div>
         </div> */}
@@ -120,8 +120,8 @@ export default function Layout({ children, page }) {
                       to={item.href}
                       className={classNames(
                         item.name === page
-                          ? "bg-lightBlue-600 text-white"
-                          : "text-lightBlue-900 hover:bg-white hover:text-lightBlue-900",
+                          ? "bg-green-600 text-white"
+                          : "text-green-900 hover:bg-white hover:text-green-900",
                         "group flex items-center px-2 py-2 text-base font-medium  hover:scale-105 hover:translate-x-5 transition-all transform -mr-6 rounded-full"
                       )}
                     >
@@ -129,7 +129,7 @@ export default function Layout({ children, page }) {
                         className={classNames(
                           item.name === page
                             ? "text-white"
-                            : "text-lightBlue-900 group-hover:text-lightBlue-900",
+                            : "text-green-900 group-hover:text-green-900",
                           "mr-4 h-6 w-6"
                         )}
                         aria-hidden="true"
@@ -141,13 +141,13 @@ export default function Layout({ children, page }) {
                     href=""
                     onClick={logOut}
                     className={classNames(
-                      "text-lightBlue-900 hover:bg-white hover:text-lightBlue-900",
+                      "text-green-900 hover:bg-white hover:text-green-900",
                       "group flex items-center px-2 py-2 text-sm font-medium  hover:scale-105 hover:translate-x-5 transition-all transform rounded-md"
                     )}
                   >
                     <LogoutIcon
                       className={classNames(
-                        "text-lightBlue-900 group-hover:text-lightBlue-900",
+                        "text-green-900 group-hover:text-green-900",
                         "mr-3 h-6 w-6"
                       )}
                       aria-hidden="true"
@@ -167,8 +167,8 @@ export default function Layout({ children, page }) {
                       />
                     </div> */}
                     {/* <div className="ml-3">
-                      <p className="text-base font-medium text-lightBlue-900">Tom Cook</p>
-                      <p className="text-sm font-medium text-lightBlue-900 group-hover:text-lightBlue-900">View profile</p>
+                      <p className="text-base font-medium text-green-900">Tom Cook</p>
+                      <p className="text-sm font-medium text-green-900 group-hover:text-green-900">View profile</p>
                     </div> */}
                   </div>
                 </a>
@@ -201,8 +201,8 @@ export default function Layout({ children, page }) {
               <img className="object-contain object-center w-40 h-40 mx-auto transition-all transform rounded-full hover:scale-110 hover:-translate-y-3" src={"user?.image"} alt="" />
             </div>
             <div className="mt-4 text-center ">
-              <p className="text-xl font-bold text-lightBlue-900 ">{"user?.fullName"}</p>
-              <p className="text-sm font-medium text-lightBlue-900">{"user?.email"}</p>
+              <p className="text-xl font-bold text-green-900 ">{"user?.fullName"}</p>
+              <p className="text-sm font-medium text-green-900">{"user?.email"}</p>
             </div>
           </div>
         </div> */}
@@ -214,8 +214,8 @@ export default function Layout({ children, page }) {
                     to={item.href}
                     className={classNames(
                       item.name === page
-                        ? "bg-lightBlue-600 text-white"
-                        : "text-lightBlue-900 hover:bg-lightBlue-600 hover:text-white",
+                        ? "bg-green-600 text-white"
+                        : "text-green-900 hover:bg-green-600 hover:text-white",
                       "group flex items-center px-2 -mr-6 rounded-full py-2 text-sm font-medium rounded-md overflow-hidden  hover:scale-105 hover:translate-x-5 transition-all transform "
                     )}
                   >
@@ -223,7 +223,7 @@ export default function Layout({ children, page }) {
                       className={classNames(
                         item.name === page
                           ? "text-white"
-                          : "text-lightBlue-900 group-hover:bg-lightBlue-600 group-hover:text-white",
+                          : "text-green-900 group-hover:bg-green-600 group-hover:text-white",
                         "mr-3 h-6 w-6"
                       )}
                       aria-hidden="true"
@@ -235,13 +235,13 @@ export default function Layout({ children, page }) {
                   href=""
                   onClick={logOut}
                   className={classNames(
-                    "text-lightBlue-900 hover:bg-white hover:text-lightBlue-900",
+                    "text-green-900 hover:bg-white hover:text-green-900",
                     "group flex items-center px-2 py-2 text-sm font-medium  hover:scale-105 hover:translate-x-5 transition-all transform rounded-md"
                   )}
                 >
                   <LogoutIcon
                     className={classNames(
-                      "text-lightBlue-900 group-hover:text-lightBlue-900",
+                      "text-green-900 group-hover:text-green-900",
                       "mr-3 h-6 w-6"
                     )}
                     aria-hidden="true"
@@ -261,8 +261,8 @@ export default function Layout({ children, page }) {
                     />
                   </div> */}
                   {/* <div className="ml-3">
-                    <p className="text-sm font-medium text-lightBlue-900">Tom Cook</p>
-                    <p className="text-xs font-medium text-lightBlue-900 group-hover:text-lightBlue-900">View profile</p>
+                    <p className="text-sm font-medium text-green-900">Tom Cook</p>
+                    <p className="text-xs font-medium text-green-900 group-hover:text-green-900">View profile</p>
                   </div> */}
                 </div>
               </a>
@@ -274,18 +274,18 @@ export default function Layout({ children, page }) {
         <div className="flex flex-row justify-between">
           <div className="pt-1 pl-1 md:hidden sm:pl-3 sm:pt-3">
             <button
-              className="-ml-0.5 -mt-0.5 h-12 w-12 inline-flex items-center justify-center rounded-md text-lightBlue-900 hover:text-lightBlue-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white0"
+              className="-ml-0.5 -mt-0.5 h-12 w-12 inline-flex items-center justify-center rounded-md text-green-900 hover:text-green-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white0"
               onClick={() => setSidebarOpen(true)}
             >
               <span className="sr-only">Open sidebar</span>
-              <MenuIcon className="w-6 h-6 text-lightBlue-600" aria-hidden="true" />
+              <MenuIcon className="w-6 h-6 text-green-600" aria-hidden="true" />
             </button>
           </div>
         </div>
         <main className="relative z-0 flex-1 overflow-y-auto focus:outline-none">
           <div className="py-6">
             {/* <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-              <h1 className="text-2xl font-semibold text-lightBlue-900">Dashboard</h1>
+              <h1 className="text-2xl font-semibold text-green-900">Dashboard</h1>
             </div> */}
             <motion.div initial={{x: 5000}} transition={{duration: 1}} animate={{x: 0}} exit={{x: -5000, transition: {ease: "easeInOut", duration: 1}}} className="px-4 mx-auto max-w-9xl sm:px-6 md:px-8">
               {children}

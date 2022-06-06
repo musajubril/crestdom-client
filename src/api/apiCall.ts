@@ -31,13 +31,13 @@ export const deleteRequest = async ({ url } : {url: string}) => {
 
 export const registration = async ({ url, data }: { url: string, data: any }) => {
   const response = await axios.post(url, data)
-  localStorage.setItem('bitstack_token', response.data.data.access)
+  localStorage.setItem('crescent_token', response.data.data.access)
   return response.data
 }
 
 export const login = async ({ url, data }: { url: string, data: any }) => {
   const response = await axios.post(url, data)
   // console.log(response.data)
-  localStorage.setItem('bitstack_token', response.data.data)
+  localStorage.setItem('crescent_token', response.data.data)
   return response.data
 }

@@ -8,9 +8,9 @@ const apiToken = axios.create({
 apiToken.interceptors.request.use(
   (config) => {
     // Add authorization key to config object if it exist
-    const bitstack_token = localStorage?.bitstack_token
-    if (bitstack_token) {
-      config.headers.common.Authorization = `${bitstack_token}`
+    const crescent_token = localStorage?.crescent_token
+    if (crescent_token) {
+      config.headers.common.Authorization = `${crescent_token}`
     }
 
     return config

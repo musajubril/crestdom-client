@@ -27,7 +27,7 @@ export default function StatsCards() {
             className="relative bg-white pt-5 px-4 pb-12 sm:pt-6 sm:px-6 shadow rounded-lg overflow-hidden"
           >
             <dt>
-              <div className="absolute bg-blue-500 rounded-md p-3">
+              <div className="absolute bg-green-500 rounded-md p-3">
                 <item.icon className="h-6 w-6 text-white" aria-hidden="true" />
               </div>
               <p className="ml-16 text-sm font-medium text-gray-500 truncate font-dosis">{item.name}</p>
@@ -36,7 +36,7 @@ export default function StatsCards() {
               <p className="text-2xl font-semibold text-gray-900 font-dosis">{item.stat}</p>
               <div className="absolute bottom-0 inset-x-0 bg-gray-50 px-4 py-4 sm:px-6">
                 <div className="text-sm">
-                  <Link to={item.href} className="font-medium text-blue-600 hover:text-blue-500">
+                  <Link to={item.href} className="font-medium text-green-600 hover:text-green-500">
                   <>
                     {' '}
                     View more<span className="sr-only"> {item.name}</span>

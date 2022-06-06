@@ -23,10 +23,10 @@ import { Link } from "react-router-dom";
 import jwtDecode from "jwt-decode";
 import { motion } from "framer-motion";
 const navigation = [
-  { name: "Dashboard", href: "/", icon: CogIcon },
-  { name: "Bookings", href: "/bookings", icon: ClipboardListIcon },
-  { name: "Rooms", href: "/rooms", icon: HomeIcon },
-  { name: "Bursar", href: "/bursar", icon: UserIcon },
+  { name: "Dashboard", href: "/admin", icon: CogIcon },
+  { name: "Bookings", href: "/admin/bookings", icon: ClipboardListIcon },
+  { name: "Rooms", href: "/admin/rooms", icon: HomeIcon },
+  { name: "Bursar", href: "/admin/bursar", icon: UserIcon },
 ];
 
 function classNames(...classes) {
@@ -37,11 +37,11 @@ export default function Layout({ children, page }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const logOut = (e: any) => {
     e.preventDefault();
-    localStorage.removeItem("ET_token");
+    localStorage.removeItem("crescent_token");
     alert("log out successful");
     window.location.href = "/login";
   };
-  // const user:{fullName: any, image: any, email: any} = jwtDecode(localStorage?.getItem("ET_token"))
+  // const user:{fullName: any, image: any, email: any} = jwtDecode(localStorage?.getItem("crescent_token"))
   return (
     <div className="flex h-screen overflow-hidden bg-gray-100">
       <Transition.Root show={sidebarOpen} as={Fragment}>
@@ -72,7 +72,7 @@ export default function Layout({ children, page }) {
             leaveFrom="translate-x-0"
             leaveTo="-translate-x-full"
           >
-            <div className="relative flex flex-col flex-1 w-full max-w-xs bg-lightBlue-600">
+            <div className="relative flex flex-col flex-1 w-full max-w-xs bg-green-600">
               <Transition.Child
                 as={Fragment}
                 enter="ease-in-out duration-300"
@@ -93,10 +93,10 @@ export default function Layout({ children, page }) {
                 </div>
               </Transition.Child>
               <div className="flex-1 h-0 pt-5 pb-4 overflow-y-auto">
-                <div className="flex items-center flex-shrink-0 px-4">
+                <div className="flex items-center justify-center w-full px-4">
                   <img
-                    className="w-auto h-8"
-                    src="https://tailwindui.com/img/logos/workflow-logo-lightBlue-500-mark-white-text.svg"
+                    className="w-auto h-40"
+                    src={require("../images/crescent.png")}
                     alt="Workflow"
                   />
                 </div>
@@ -120,15 +120,15 @@ export default function Layout({ children, page }) {
                       to={item.href}
                       className={classNames(
                         item.name === page
-                          ? "bg-white text-lightBlue-900"
-                          : "text-white hover:bg-lightBlue-600 hover:text-white",
+                          ? "bg-white text-green-900"
+                          : "text-white hover:bg-green-600 hover:text-white",
                         "group flex items-center px-2 py-2 text-base font-medium  hover:scale-105 hover:translate-x-5 transition-all transform -mr-6 rounded-full"
                       )}
                     >
                       <item.icon
                         className={classNames(
                           item.name === page
-                            ? "text-lightBlue-900"
+                            ? "text-green-900"
                             : "text-white group-hover:text-white",
                           "mr-4 h-6 w-6"
                         )}
@@ -141,7 +141,7 @@ export default function Layout({ children, page }) {
                     href=""
                     onClick={logOut}
                     className={classNames(
-                      "text-white hover:bg-lightBlue-600 hover:text-white",
+                      "text-white hover:bg-green-600 hover:text-white",
                       "group flex items-center px-2 py-2 text-sm font-medium  hover:scale-105 hover:translate-x-5 transition-all transform rounded-md"
                     )}
                   >
@@ -156,7 +156,7 @@ export default function Layout({ children, page }) {
                   </a>
                 </nav>
               </div>
-              <div className="flex flex-shrink-0 p-4 bg-lightBlue-600">
+              <div className="flex flex-shrink-0 p-4 bg-green-600">
                 <a href="#" className="flex-shrink-0 block group">
                   <div className="flex items-center">
                     {/* <div>
@@ -185,13 +185,13 @@ export default function Layout({ children, page }) {
       <div className="hidden md:flex md:flex-shrink-0">
         <div className="flex flex-col w-64">
           {/* Sidebar component, swap this element with another sidebar if you like */}
-          <div className="flex flex-col flex-1 h-0 bg-lightBlue-600">
+          <div className="flex flex-col flex-1 h-0 bg-green-600">
             <div className="flex flex-col flex-1 pt-5 pb-4 overflow-y-auto">
-              <div className="flex items-center flex-shrink-0 px-4">
+              <div className="flex items-center px-4 w-full justify-center">
                 <img
-                  className="w-auto h-8"
-                  src="https://tailwindui.com/img/logos/workflow-logo-lightBlue-500-mark-white-text.svg"
-                  alt="Workflow"
+                  className="w-auto h-40"
+                  src={require("../images/crescent.png")}
+                                    alt="Workflow"
                 />
               </div>
               <div className="py-6 bg-transparent">
@@ -207,23 +207,23 @@ export default function Layout({ children, page }) {
           </div>
         </div> */}
       </div>
-              <nav className="flex-1 px-2 mt-5 space-y-1 overflow-hidden bg-lightBlue-600">
+              <nav className="flex-1 px-2 mt-5 space-y-1 overflow-hidden bg-green-600">
                 {navigation.map((item) => (
                   <Link
                     key={item.name}
                     to={item.href}
                     className={classNames(
                       item.name === page
-                        ? "bg-white text-lightBlue-900"
-                        : "text-white hover:bg-white hover:text-lightBlue-900",
+                        ? "bg-white text-green-900"
+                        : "text-white hover:bg-white hover:text-green-900",
                       "group flex items-center px-2 -mr-6 rounded-full py-2 text-sm font-medium rounded-md overflow-hidden  hover:scale-105 hover:translate-x-5 transition-all transform "
                     )}
                   >
                     <item.icon
                       className={classNames(
                         item.name === page
-                          ? "text-lightBlue-900"
-                          : "text-white group-hover:bg-white group-hover:text-lightBlue-900",
+                          ? "text-green-900"
+                          : "text-white group-hover:bg-white group-hover:text-green-900",
                         "mr-3 h-6 w-6"
                       )}
                       aria-hidden="true"
@@ -235,7 +235,7 @@ export default function Layout({ children, page }) {
                   href=""
                   onClick={logOut}
                   className={classNames(
-                    "text-white hover:bg-lightBlue-600 hover:text-white",
+                    "text-white hover:bg-green-600 hover:text-white",
                     "group flex items-center px-2 py-2 text-sm font-medium  hover:scale-105 hover:translate-x-5 transition-all transform rounded-md"
                   )}
                 >
@@ -250,7 +250,7 @@ export default function Layout({ children, page }) {
                 </a>
               </nav>
             </div>
-            <div className="flex flex-shrink-0 p-4 bg-lightBlue-600">
+            <div className="flex flex-shrink-0 p-4 bg-green-600">
               <a href="#" className="flex-shrink-0 block w-full group">
                 <div className="flex items-center">
                   {/* <div>
@@ -274,11 +274,11 @@ export default function Layout({ children, page }) {
         <div className="flex flex-row justify-between">
           <div className="pt-1 pl-1 md:hidden sm:pl-3 sm:pt-3">
             <button
-              className="-ml-0.5 -mt-0.5 h-12 w-12 inline-flex items-center justify-center rounded-md text-white hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-lightBlue-500"
+              className="-ml-0.5 -mt-0.5 h-12 w-12 inline-flex items-center justify-center rounded-md text-white hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-green-500"
               onClick={() => setSidebarOpen(true)}
             >
               <span className="sr-only">Open sidebar</span>
-              <MenuIcon className="w-6 h-6 text-lightBlue-600" aria-hidden="true" />
+              <MenuIcon className="w-6 h-6 text-green-600" aria-hidden="true" />
             </button>
           </div>
         </div>

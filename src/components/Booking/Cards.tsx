@@ -56,8 +56,8 @@ export default function Cards({students, school}) {
                   student.is_verified ? 
                   (
                     <>
-                    <DotsCircleHorizontalIcon className="w-5 h-5  text-lightBlue-600" aria-hidden="true" />
-                    <span className="ml-3 text-lightBlue-600">Sent To Bursar</span>
+                    <DotsCircleHorizontalIcon className="w-5 h-5  text-green-600" aria-hidden="true" />
+                    <span className="ml-3 text-green-600">Sent To Bursar</span>
                     </>
 
 )

@@ -12,7 +12,7 @@ const RoomGrid = ({people}) => {
           >
             <div className="flex-1 flex flex-col p-8">
               <img
-                className="w-auto h-auto mx-auto bg-lightBlue-600"
+                className="w-auto h-auto mx-auto bg-green-600"
                 src={person.imageUrl}
                 alt=""
               />
@@ -32,10 +32,10 @@ const RoomGrid = ({people}) => {
                 <div className="w-0 flex-1 flex">
                   <a
                     href={`mailto:${person.email}`}
-                    className="relative -mr-px w-0 flex-1 inline-flex items-center justify-center py-4 text-sm text-lightBlue-700 font-medium border border-transparent rounded-bl-lg hover:text-lightBlue-500"
+                    className="relative -mr-px w-0 flex-1 inline-flex items-center justify-center py-4 text-sm text-green-700 font-medium border border-transparent rounded-bl-lg hover:text-green-500"
                   >
                     <PencilAltIcon
-                      className="w-5 h-5 text-lightBlue-400"
+                      className="w-5 h-5 text-green-400"
                       aria-hidden="true"
                     />
                     <span className="ml-3">Edit</span>
@@ -44,10 +44,10 @@ const RoomGrid = ({people}) => {
                 <div className="-ml-px w-0 flex-1 flex">
                   <a
                     href={`tel:${person.telephone}`}
-                    className="relative w-0 flex-1 inline-flex items-center justify-center py-4 text-sm text-lightBlue-700 font-medium border border-transparent rounded-br-lg hover:text-lightBlue-500"
+                    className="relative w-0 flex-1 inline-flex items-center justify-center py-4 text-sm text-green-700 font-medium border border-transparent rounded-br-lg hover:text-green-500"
                   >
                     <TrashIcon
-                      className="w-5 h-5 text-lightBlue-400"
+                      className="w-5 h-5 text-green-400"
                       aria-hidden="true"
                     />
                     <span className="ml-3">Delete</span>

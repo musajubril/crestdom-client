@@ -65,6 +65,8 @@ module.exports = {
       72: '18rem',
       80: '20rem',
       96: '24rem',
+      rectangle: "417px",
+      min_rectangle: "281px"
     },
     animation: {
       none: 'none',

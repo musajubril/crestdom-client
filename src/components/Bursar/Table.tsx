@@ -110,12 +110,12 @@ export default function Table({ students, school }) {
                         {person.age}
                       </td> */}
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                      <a href={`/${school}/result/${person.id}`} target="_blank" className="text-lightBlue-600 hover:text-lightBlue-900">
+                      <a href={`/${school}/result/${person.id}`} target="_blank" className="text-green-600 hover:text-green-900">
                         School Fee Receipt
                       </a>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                      <a href={`/${school}/result/${person.id}`} target="_blank" className="text-lightBlue-600 hover:text-lightBlue-900">
+                      <a href={`/${school}/result/${person.id}`} target="_blank" className="text-green-600 hover:text-green-900">
                         Hostel Receipt
                       </a>
                       </td>
