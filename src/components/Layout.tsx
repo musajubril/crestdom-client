@@ -272,6 +272,11 @@ export default function Layout({ children, page }) {
       </div>
       <div className="flex flex-col flex-1 w-0 overflow-hidden">
         <div className="flex flex-row justify-between">
+        <div className="pt-1 ml-9 md:hidden sm:ml-3 sm:pt-3 text-green-600 flex items-center">
+            <p className="text-center text-5xl font-extrabold">
+            Cuab-Hostel
+            </p>
+            </div>
           <div className="pt-1 pl-1 md:hidden sm:pl-3 sm:pt-3">
             <button
               className="-ml-0.5 -mt-0.5 h-12 w-12 inline-flex items-center justify-center rounded-md text-white hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-green-500"
