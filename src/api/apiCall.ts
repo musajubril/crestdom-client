@@ -38,6 +38,6 @@ export const registration = async ({ url, data }: { url: string, data: any }) =>
 export const login = async ({ url, data }: { url: string, data: any }) => {
   const response = await axios.post(url, data)
   // console.log(response.data)
-  localStorage.setItem('crescent_token', response.data.data)
+  localStorage.setItem('crescent_token', response.data)
   return response.data
 }

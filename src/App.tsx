@@ -11,6 +11,7 @@ import CreateAccountStudent from "components/Auth/CreateAccountStudent";
 import BursarList from "components/BursarModule/Lists";
 import BursarDashboard from "components/BursarModule/Dashboard";
 import StudentRooms from "components/Student/Rooms";
+import CreateAccountAdmin from "components/Auth/CreateAccountAdmin";
 function App() {
   return (
     <>
@@ -34,6 +35,7 @@ function App() {
               <Route exact path="/admin/bursar" component={Bursar} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/create-account" component={CreateAccountStudent} />
+              <Route exact path="/admin/verify/create-account" component={CreateAccountAdmin} />
             </Switch>
         )}
          />
