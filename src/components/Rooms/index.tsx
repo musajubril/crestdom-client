@@ -4,9 +4,11 @@ import RoomGrid from "./RoomGrid";
 import Title from "./Title";
 
 const Rooms = () => {
-  const people = [
+  const rooms =[
     {
       hostel_name: "Medeyomi House",
+price: "45000",
+      type: "General",
       room_number: "23",
       availability: "Available",
       email: "janecooper@example.com",
@@ -16,6 +18,8 @@ const Rooms = () => {
     },
     {
       hostel_name: "Medeyomi House",
+price: "45000",
+      type: "Private",
       room_number: "23",
       availability: "Available",
       email: "janecooper@example.com",
@@ -25,6 +29,8 @@ const Rooms = () => {
     },
     {
       hostel_name: "Medeyomi House",
+price: "45000",
+      type: "General",
       room_number: "23",
       availability: "Available",
       email: "janecooper@example.com",
@@ -34,6 +40,8 @@ const Rooms = () => {
     },
     {
       hostel_name: "Medeyomi House",
+price: "45000",
+      type: "General",
       room_number: "23",
       availability: "Available",
       email: "janecooper@example.com",
@@ -43,6 +51,8 @@ const Rooms = () => {
     },
     {
       hostel_name: "Medeyomi House",
+price: "45000",
+      type: "Private",
       room_number: "23",
       availability: "Available",
       email: "janecooper@example.com",
@@ -52,6 +62,8 @@ const Rooms = () => {
     },
     {
       hostel_name: "Medeyomi House",
+price: "45000",
+      type: "General",
       room_number: "23",
       availability: "Available",
       email: "janecooper@example.com",
@@ -61,6 +73,8 @@ const Rooms = () => {
     },
     {
       hostel_name: "Medeyomi House",
+price: "45000",
+      type: "Private",
       room_number: "23",
       availability: "Available",
       email: "janecooper@example.com",
@@ -70,6 +84,8 @@ const Rooms = () => {
     },
     {
       hostel_name: "Medeyomi House",
+price: "45000",
+      type: "General",
       room_number: "23",
       availability: "Available",
       email: "janecooper@example.com",
@@ -77,12 +93,12 @@ const Rooms = () => {
       imageUrl:
         require("../../images/rm8.jpg")
     },
-    // More people...
+    // More rooms...
   ];
   return (
     <Layout page="Rooms">
     <Title />
-     <RoomGrid people={people} />
+     <RoomGrid rooms={rooms} />
     </Layout>
   );
 };

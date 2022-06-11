@@ -10,6 +10,7 @@ import LandingPage from "components/Auth/LandingPage";
 import CreateAccountStudent from "components/Auth/CreateAccountStudent";
 import BursarList from "components/BursarModule/Lists";
 import BursarDashboard from "components/BursarModule/Dashboard";
+import StudentRooms from "components/Student/Rooms";
 function App() {
   return (
     <>
@@ -24,6 +25,10 @@ function App() {
               <Route exact path="/bursar/verified" component={BursarList} />
               <Route exact path="/bursar/not-verified" component={BursarList} />
               <Route exact path="/student" component={StudentDashboard} />
+              <Route exact path="/student/rooms" component={StudentRooms} />
+              <Route exact path="/student/private" component={StudentRooms} />
+              <Route exact path="/student/general" component={StudentRooms} />
+              {/* <Route exact path="/student/apartment-info" component={StudentDashboard} /> */}
               <Route exact path="/admin/bookings" component={Booking} />
               <Route exact path="/admin/rooms" component={Rooms} />
               <Route exact path="/admin/bursar" component={Bursar} />

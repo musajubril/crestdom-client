@@ -18,16 +18,20 @@ import {
   CogIcon,
   FolderAddIcon,
   FolderRemoveIcon,
-  ClipboardListIcon
+  ClipboardListIcon,
+  LockClosedIcon,
+  LockOpenIcon
 } from "@heroicons/react/outline";
 import { Link } from "react-router-dom";
 import jwtDecode from "jwt-decode";
 import { motion } from "framer-motion";
+
 const navigation = [
-  { name: "Dashboard", href: "/bursar", icon: CogIcon },
-  { name: "All", href: "/bursar/all", icon: UsersIcon },
-  { name: "Verified", href: "/bursar/verified", icon: FolderAddIcon },
-  { name: "Not Verified", href: "/bursar/not-verified", icon: FolderRemoveIcon },
+  { name: "Dashboard", href: "/student", icon: CogIcon },
+  { name: "Rooms", href: "/student/rooms", icon: OfficeBuildingIcon },
+  { name: "General", href: "/student/general", icon: LockOpenIcon },
+  { name: "Private", href: "/student/private", icon: LockClosedIcon },
+  // { name: "Apartment Info", href: "/student/", icon: ClipboardListIcon },
 ];
 
 function classNames(...classes) {
