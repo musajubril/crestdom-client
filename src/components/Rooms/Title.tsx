@@ -1,9 +1,11 @@
 
 import { CheckIcon } from '@heroicons/react/outline';
-import { ChevronDownIcon, SearchIcon, SortAscendingIcon, CloudUploadIcon, RefreshIcon } from '@heroicons/react/solid'
+import { SearchIcon, CloudUploadIcon, RefreshIcon } from '@heroicons/react/solid'
 import ModalDialog from 'components/Dialog';
 import React from 'react'
-
+import { ADD_ROOM } from 'api/apiUrl'
+import { postRequest } from 'api/apiCall';
+import { useMutation } from 'react-query';
 const Title = () => {
     const [open, setOpen] = React.useState(false)
     const [state, setState] = React.useState({
@@ -51,9 +53,27 @@ const Title = () => {
     setImageURL({...imageURL, uploaded:true})
     console.log(file.secure_url)
     }
+    const { mutate } = useMutation(postRequest, {
+      onSuccess(data) {
+        alert("Admin Account Created Successfully")
+        // props.history.push("/login", "/login")
+      },
+    });
     const AddNewRoom = () => {
-      
+      mutate({
+        url: ADD_ROOM,
+        data: {
+          image: imageURL.url,
+          type: state.type,
+          room_number: state.room_number,
+      number_acceptable: state.number_acceptable,
+      hostel_name: state.hostel_name,
+      gender: state.gender,
+      price: state.price
+        },
+      });
     }
+    // console.log(imageURL.url)
     return (
         <div className="pb-5 border-b border-green-200 sm:flex sm:items-center sm:justify-between">
         <h3 className="text-lg font-medium leading-6 text-gray-900">Students</h3>
@@ -181,7 +201,7 @@ const Title = () => {
                 </>
               </div>
               {
-                [
+               imageURL.uploaded && [
                   {placeholder:"Enter Hostel name", name:"Hostel Name", type: "text", option: [], select: false, id: "hostel_name", change: handleChange},
                   {placeholder:"Enter Room Number", name:"Room Number", type: "text", option: [], select: false, id: "room_number", change: handleChange},
                   {placeholder:"", name:"Hostel Type", type: "", option: ["Please Select Hostel Type", "General", "Private"], select: true, id: "type", change: handleSelect},
