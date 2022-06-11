@@ -1,17 +1,10 @@
 
-import { ChevronDownIcon, SearchIcon, SortAscendingIcon } from '@heroicons/react/solid'
+import { CheckIcon } from '@heroicons/react/outline';
+import { ChevronDownIcon, SearchIcon, SortAscendingIcon, CloudUploadIcon, RefreshIcon } from '@heroicons/react/solid'
 import ModalDialog from 'components/Dialog';
 import React from 'react'
 
 const Title = () => {
-  // type,
-  //     image,
-  //     video,
-  //     room_number,
-  //     number_acceptable,
-  //     hostel_name,
-  //     gender,
-  //     price
     const [open, setOpen] = React.useState(false)
     const [state, setState] = React.useState({
       type: "",
@@ -36,10 +29,30 @@ const Title = () => {
         image: e.target.files[0],
       });
     };
+    const [imageURL, setImageURL] = React.useState({
+      uploading: false,
+      uploaded: false,
+      url: ""
+    })
+    const UploadImage = async(e: any) => {
+    const data = new FormData()
+    data.append('file', state.image)
+    data.append('upload_preset', 'jewbreel')
+    setImageURL({...imageURL, uploading:true})
+    const res = await fetch('https://api.cloudinary.com/v1_1/jewbreel1/image/upload',
+    {
+      method:'POST',
+      body:data
+    }
+    )
+    const file = await res.json()
+    setImageURL({...imageURL, url:file.secure_url})
+    setImageURL({...imageURL, uploading:false})
+    setImageURL({...imageURL, uploaded:true})
+    console.log(file.secure_url)
+    }
     const AddNewRoom = () => {
-      alert(`${state.hostel_name} added successfully`)
-      console.log(state)
-      setOpen(false)
+      
     }
     return (
         <div className="pb-5 border-b border-green-200 sm:flex sm:items-center sm:justify-between">
@@ -131,6 +144,41 @@ const Title = () => {
                     </div>
                   )}
                 </label>
+                <>
+                {
+                  state.image &&
+                  <>
+                    <div className="flex w-full justify-end mt-3">
+            <button className="border-2 border-green-600  bg-green-50 text-green-600 transform transition-all flex rounded-lg px-6 py-2 hover:scale-105 hover:text-green-50 hover:bg-green-600 mr-2" onClick={UploadImage} disabled={imageURL.uploaded || imageURL.uploading}>
+                      {
+                        imageURL.uploading ? 
+                        <>
+                    Uploading
+                    <span className=" ml-2 h-full flex items-center">
+                        <RefreshIcon className='w-5 h-5 animate-spin' />
+                    </span>
+                        </>
+                        :
+                        imageURL.uploaded ?
+                        <>
+                        Done
+                    <span className=" ml-2 h-full flex items-center">
+                        <CheckIcon className='w-5 h-5' />
+                    </span>
+                        </>
+                        :
+                        <>
+                        Upload
+                    <span className=" ml-2 h-full flex items-center">
+                        <CloudUploadIcon className='w-5 h-5' />
+                    </span>
+                        </>
+                      }
+                </button>
+            </div>
+                  </>
+                }
+                </>
               </div>
               {
                 [
