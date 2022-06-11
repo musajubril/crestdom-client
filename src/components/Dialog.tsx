@@ -18,7 +18,7 @@ const Transition = React.forwardRef(function Transition(
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function ModalDialog({open, setOpen, Button:ModalButton, Body:ModalBody, Title:ModalTitle, handleSubmit}) {
+export default function ModalDialog({open, setOpen, Button:ModalButton, children, Title:ModalTitle, handleSubmit}) {
 //   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -53,11 +53,8 @@ export default function ModalDialog({open, setOpen, Button:ModalButton, Body:Mod
             </div>
             </DialogTitle>
         <DialogContent>
-          {/* <DialogContentText id="alert-dialog-slide-description">
-            Let Google help apps determine location. This means sending anonymous
-            location data to Google, even when no apps are running.
-          </DialogContentText> */}
-          <ModalBody/>
+          {children}
+          {/* <ModalBody/> */}
         </DialogContent>
         <DialogActions>
             <div className="flex w-full justify-end">

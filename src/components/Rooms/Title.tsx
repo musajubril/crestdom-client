@@ -24,10 +24,10 @@ const Title = () => {
       price: ""
     })
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      setState({...state, [e.target.id]: e.target.name})
+      setState({...state, [e.target.id]: e.target.value})
     }
     const handleSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setState({...state, [e.target.id]: e.target.name})
+    setState({...state, [e.target.id]: e.target.value})
     }
     const handleImage = (e: any) => {
       setState({
@@ -84,8 +84,12 @@ const Title = () => {
             Add New
             </button>
                 )}
-                Body={()=>(
-                  <>
+                // Body={()=>(
+                  
+                // )}
+                handleSubmit={AddNewRoom}
+              >
+                <>
                   <div>
                 <label
                   htmlFor="image"
@@ -158,24 +162,8 @@ const Title = () => {
                   </>
                 ))
               }
-              <div className="mb-2 w-full flex items-center flex-col">
-        <div className=" mb-3 w-full">
-Hostel Name
-        </div>
-          <input onChange={handleChange} type="text" className=" lg:h-11 w-full h-11 mx-auto border-gray-400 border-2 placeholder-gray-400 lg:text-sm text-xs pl-4 rounded-lg" placeholder="Enter Hostel Name" id="hostel_name" />
-      </div>
-              <div className="mb-2 w-full flex items-center flex-col">
-        <div className=" mb-3 w-full">
-Gender
-        </div>
-          <select onChange={handleSelect} className=" lg:h-11 w-full h-11 mx-auto border-gray-400 border-2 placeholder-gray-400 lg:text-sm text-xs pl-4 rounded-lg" id="gender">
-                <option>Male</option>
-          </select>
-      </div>
                   </>
-                )}
-                handleSubmit={AddNewRoom}
-              />
+              </ModalDialog>
               </div>
           </div>
         </div>
