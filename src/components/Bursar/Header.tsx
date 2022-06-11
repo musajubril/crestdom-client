@@ -2,9 +2,30 @@ import React from 'react';
 import { PencilAltIcon } from '@heroicons/react/outline';
 import ModalDialog from "../Dialog"
 import TextField from "@mui/material/TextField"
+import jwtDecode from 'jwt-decode';
+import { ADD_BURSAR, GET_BURSAR } from '../../api/apiUrl';
+import { getRequest, postRequest } from 'api/apiCall';
+import { useMutation, useQuery } from 'react-query';
+import { queryKeys } from 'api/queryKey';
 
 const Header = () => {
-  
+  const [open, setOpen] = React.useState<boolean>(false)
+  const decode:{admin_id: any} = jwtDecode(localStorage?.crescent_token)
+  const {
+    data
+  } = useQuery(
+    [queryKeys.getBursar, !open, open],
+    async () => await getRequest({ url: GET_BURSAR }),
+    {
+      retry: 2,
+      enabled: !open || open
+    }
+    )
+  const [bursar, setBursar] = React.useState(data?.data)
+  React.useEffect(()=>{
+  setBursar(data?.data)
+  },[data?.data])
+  console.log(bursar)
     const user = {
         name: 'Lawal Oyindamola Habeebah',
         role: 'Bursar',
@@ -16,19 +37,27 @@ const Header = () => {
         { label: 'Sick days left', value: 4 },
         { label: 'Personal days left', value: 2 },
       ]
-      const [open, setOpen] = React.useState<boolean>(false)
       const [state, setState] = React.useState({
-        full_name: "",
-        email: "",
-        phone_number: null
+        full_name: bursar?.full_name,
+        email: bursar?.email,
+        phone_number: bursar?.phone_number,
+        admin_id: decode?.admin_id
       })
       const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setState({...state, [e.target.id]: e.target.value})
       }
+      const { mutate } = useMutation(postRequest, {
+        onSuccess(data) {
+          alert("Bursar Info Updated Successfully")
+          setOpen(false)
+          // props.history.push("/login", "/login")
+        },
+      });
       const EditBursar = () => {
-        alert(`${state.full_name} updated successfully`)
-        console.log(state)
-        setOpen(false)
+        mutate({
+          url: ADD_BURSAR,
+          data: state
+        })
       }
     return (
         <div className="grid grid-cols-1 gap-4 md:grid-cols-1 w-full">
@@ -45,7 +74,8 @@ const Header = () => {
             </div>
             <div className="mt-4 text-center sm:mt-0 sm:pt-1 sm:text-left">
               {/* <p className="text-sm font-medium text-gray-600">Welcome back,</p> */}
-              <p className="text-xl font-bold text-gray-900 sm:text-2xl">{user?.name}</p>
+              <p className="text-xl font-bold text-gray-900 sm:text-2xl">{bursar?.full_name}</p>
+              <p className="text-sm font-medium text-gray-600 capitalize">{bursar?.email}</p>
               <p className="text-sm font-medium text-gray-600 capitalize">{user?.role}</p>
             </div>
           </div>
@@ -67,19 +97,19 @@ const Header = () => {
 <div className=" mb-3 w-full">
 Email Address
 </div>
-<input onChange={handleChange} type="email" className=" lg:h-11 w-full h-7 mx-auto border-gray-400 border-2 placeholder-gray-400 lg:text-sm text-xs pl-4 rounded-lg" placeholder="e.g marydoe@gmail.com" id="email" />
+<input onChange={handleChange} value={state.email} type="email" className=" lg:h-11 w-full h-7 mx-auto border-gray-400 border-2 placeholder-gray-400 lg:text-sm text-xs pl-4 rounded-lg" placeholder="e.g marydoe@gmail.com" id="email" />
 </div>
     <div className="mb-2 w-full flex items-center flex-col">
 <div className=" mb-3 w-full">
 Full Name
 </div>
-<input onChange={handleChange} type="text" className=" lg:h-11 w-full h-7 mx-auto border-gray-400 border-2 placeholder-gray-400 lg:text-sm text-xs pl-4 rounded-lg" placeholder="e.g Mary Doe" id="full_name" />
+<input onChange={handleChange} value={state.full_name} type="text" className=" lg:h-11 w-full h-7 mx-auto border-gray-400 border-2 placeholder-gray-400 lg:text-sm text-xs pl-4 rounded-lg" placeholder="e.g Mary Doe" id="full_name" />
 </div>
     <div className="mb-2 w-full flex items-center flex-col">
 <div className=" mb-3 w-full">
 Phone Number
 </div>
-<input onChange={handleChange} type="number" className=" lg:h-11 w-full h-7 mx-auto border-gray-400 border-2 placeholder-gray-400 lg:text-sm text-xs pl-4 rounded-lg" placeholder="e.g 2349078044747" id="phone_number" />
+<input onChange={handleChange} value={state.phone_number} type="number" className=" lg:h-11 w-full h-7 mx-auto border-gray-400 border-2 placeholder-gray-400 lg:text-sm text-xs pl-4 rounded-lg" placeholder="e.g 2349078044747" id="phone_number" />
 </div>
     </React.Fragment>
               </ModalDialog>

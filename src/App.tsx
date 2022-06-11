@@ -12,7 +12,9 @@ import BursarList from "components/BursarModule/Lists";
 import BursarDashboard from "components/BursarModule/Dashboard";
 import StudentRooms from "components/Student/Rooms";
 import CreateAccountAdmin from "components/Auth/CreateAccountAdmin";
+import jwtDecode from "jwt-decode";
 function App() {
+  console.log(localStorage?.crescent_token ? jwtDecode(localStorage?.crescent_token) : "No Token Specified")
   return (
     <>
     <BrowserRouter>

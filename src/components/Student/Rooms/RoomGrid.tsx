@@ -4,8 +4,8 @@ import { PencilAltIcon } from "@heroicons/react/outline";
 
 const RoomGrid = ({rooms, showType}) => {
     return (
-        <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-        {rooms.map((room,i) => (
+        <ul className="grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        {rooms?.map((room,i) => (
           <li
             key={i}
             className="col-span-1 flex flex-col text-center bg-white rounded-lg shadow divide-y divide-gray-200 transition-all duration-500 hover:scale-105 hover:shadow-lg transform"
@@ -13,7 +13,7 @@ const RoomGrid = ({rooms, showType}) => {
             <div className="flex-1 flex flex-col p-8">
               <img
                 className="w-auto h-auto mx-auto bg-green-600"
-                src={room.imageUrl}
+                src={room.image}
                 alt=""
               />
               <h3 className="mt-3 text-gray-900 text-sm font-medium">
@@ -27,7 +27,7 @@ const RoomGrid = ({rooms, showType}) => {
               }
               <h3 className="mt-1 text-gray-900 text-sm font-medium flex w-full text-center justify-center">
                 <span>
-                Number in room: 4
+                Number in room: {room.number_acceptable}
                 </span>
                 {/* <UsersIcon
                       className="w-5 h-5 text-green-400"
@@ -39,9 +39,16 @@ const RoomGrid = ({rooms, showType}) => {
               </h3>
               <dl className="mt-1 flex-grow flex flex-col justify-between">
                 <dd className="mt-1">
+                    {
+                    room.availability ?
                   <span className="px-2 py-1 text-green-800 text-xs font-medium bg-green-100 rounded-full">
-                    {room.availability}
+                  Available
                   </span>
+                  :
+                  <span className="px-2 py-1 text-red-800 text-xs font-medium bg-red-100 rounded-full">
+                    Not Available
+                  </span>
+                    }
                 </dd>
               </dl>
             </div>

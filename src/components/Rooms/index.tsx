@@ -1,100 +1,28 @@
+import { getRequest } from "api/apiCall";
+import { ALL_ROOMS, GET_ALL_ROOMS } from "api/apiUrl";
+import { queryKeys } from "api/queryKey";
 import React from "react";
+import { useQuery } from "react-query";
 import Layout from "./../Layout";
 import RoomGrid from "./RoomGrid";
 import Title from "./Title";
 
 const Rooms = () => {
-  const rooms =[
+  const {
+    data
+  } = useQuery(
+    [queryKeys.getAllRooms],
+    async () => await getRequest({ url: GET_ALL_ROOMS }),
     {
-      hostel_name: "Medeyomi House",
-price: "45000",
-      type: "General",
-      room_number: "23",
-      availability: "Available",
-      email: "janecooper@example.com",
-      telephone: "+1-202-555-0170",
-      imageUrl:
-        require("../../images/rm1.jpg")
-    },
-    {
-      hostel_name: "Medeyomi House",
-price: "45000",
-      type: "Private",
-      room_number: "23",
-      availability: "Available",
-      email: "janecooper@example.com",
-      telephone: "+1-202-555-0170",
-      imageUrl:
-        require("../../images/rm2.jpg")
-    },
-    {
-      hostel_name: "Medeyomi House",
-price: "45000",
-      type: "General",
-      room_number: "23",
-      availability: "Available",
-      email: "janecooper@example.com",
-      telephone: "+1-202-555-0170",
-      imageUrl:
-        require("../../images/rm3.jpg")
-    },
-    {
-      hostel_name: "Medeyomi House",
-price: "45000",
-      type: "General",
-      room_number: "23",
-      availability: "Available",
-      email: "janecooper@example.com",
-      telephone: "+1-202-555-0170",
-      imageUrl:
-        require("../../images/rm4.jpg")
-    },
-    {
-      hostel_name: "Medeyomi House",
-price: "45000",
-      type: "Private",
-      room_number: "23",
-      availability: "Available",
-      email: "janecooper@example.com",
-      telephone: "+1-202-555-0170",
-      imageUrl:
-        require("../../images/rm5.jpg")
-    },
-    {
-      hostel_name: "Medeyomi House",
-price: "45000",
-      type: "General",
-      room_number: "23",
-      availability: "Available",
-      email: "janecooper@example.com",
-      telephone: "+1-202-555-0170",
-      imageUrl:
-        require("../../images/rm6.jpg")
-    },
-    {
-      hostel_name: "Medeyomi House",
-price: "45000",
-      type: "Private",
-      room_number: "23",
-      availability: "Available",
-      email: "janecooper@example.com",
-      telephone: "+1-202-555-0170",
-      imageUrl:
-        require("../../images/rm7.jpg")
-    },
-    {
-      hostel_name: "Medeyomi House",
-price: "45000",
-      type: "General",
-      room_number: "23",
-      availability: "Available",
-      email: "janecooper@example.com",
-      telephone: "+1-202-555-0170",
-      imageUrl:
-        require("../../images/rm8.jpg")
-    },
-    // More rooms...
-  ];
+      retry: 2,
+    }
+    )
+const [rooms, setRooms] = React.useState(data?.data)
+React.useEffect(()=>{
+  setRooms(data?.data)
+},[data?.data])
+console.log(rooms)
+  // const rooms = props.history.location.pathname === "/student/private" ?rooms?.filter(check=>"Private"===check.type) : props.history.location.pathname === "/student/general" ? rooms?.filter(check=>"Private"!==check.type) :rooms
   return (
     <Layout page="Rooms">
     <Title />

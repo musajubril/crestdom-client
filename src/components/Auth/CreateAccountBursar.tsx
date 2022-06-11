@@ -2,7 +2,6 @@ import { login } from 'api/apiCall';
 import { SIGN_IN, SIGN_UP } from 'api/apiUrl';
 import React from 'react'
 import { useMutation } from 'react-query';
-import { postRequest } from '../../api/apiCall';
 
 export default function CreateAccountAdmin(props) {
   const [state, setState] = React.useState({
@@ -13,7 +12,7 @@ export default function CreateAccountAdmin(props) {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setState({...state, [e.target.id]: e.target.value})
   }
-  const { mutate } = useMutation(postRequest, {
+  const { mutate } = useMutation(login, {
     onSuccess(data) {
       alert("Admin Account Created Successfully")
       props.history.push("/login", "/login")

@@ -55,7 +55,8 @@ const Title = () => {
     }
     const { mutate } = useMutation(postRequest, {
       onSuccess(data) {
-        alert("Admin Account Created Successfully")
+        alert("Room Added Successfully")
+        setOpen(false)
         // props.history.push("/login", "/login")
       },
     });
