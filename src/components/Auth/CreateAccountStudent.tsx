@@ -1,7 +1,39 @@
+import { CREATE_STUDENT } from 'api/apiUrl';
+import jwtDecode from 'jwt-decode';
 import React from 'react'
+import { useMutation } from 'react-query';
+import { postRequest } from '../../api/apiCall';
 
-export default function CreateAccountStudent() {
+export default function CreateAccountStudent(props) {
     // { password, email, phone_number, full_name, matric_number, jamb_number, gender }
+    const [state, setState] = React.useState({
+      password: "",
+      email: "",
+      phone_number: "",
+      full_name: "",
+      matric_number: "",
+      jamb_number: "",
+      gender: ""
+    })
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      setState({...state, [e.target.id]: e.target.value})
+    }
+    const handleSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
+      setState({...state, [e.target.id]: e.target.value})
+    }
+    const { mutate } = useMutation(postRequest, {
+      onSuccess(data) {
+        alert(`${state.full_name} account created successfully`)
+        props.history.push("/login", "/login")
+      },
+    });
+    const submitForm = (e: any) => {
+      e.preventDefault();
+      mutate({
+        url: CREATE_STUDENT,
+        data: state,
+      });
+    };
   return (
     <div className="min-h-screen">
         <div className="w-full lg:h-screen flex font-sans">
@@ -18,20 +50,20 @@ export default function CreateAccountStudent() {
         <div className=" mb-3">
           Full name
         </div>
-        <input required type="text" className=" lg:h-11 lg:w-rectangle w-min_rectangle h-10 mx-auto border-green-500 border-2 placeholder-gray-400 lg:text-sm text-xs pl-4 rounded-lg" placeholder="e.g John Doe" id="full_name" />
+        <input onChange={handleChange} required type="text" className=" lg:h-11 lg:w-rectangle w-min_rectangle h-10 mx-auto border-green-500 border-2 placeholder-gray-400 lg:text-sm text-xs pl-4 rounded-lg" placeholder="e.g John Doe" id="full_name" />
       </div>
       <div className="mb-2 lg:w-rectangle w-min_rectangle lg:flex">
         <div className="lg:w-1/2 w-full mx-auto">
         <div className=" mb-3">
           Email Address
         </div>
-        <input required type="email" className=" lg:h-11 lg:w-full  h-10 w-min_rectangle lg:mr-2 mx-auto border-gray-400 border-2 placeholder-gray-400 lg:text-sm text-xs pl-4 rounded-lg" placeholder="e.g johndoe996@gmail.com" id="email" />
+        <input onChange={handleChange} required type="email" className=" lg:h-11 lg:w-full  h-10 w-min_rectangle lg:mr-2 mx-auto border-gray-400 border-2 placeholder-gray-400 lg:text-sm text-xs pl-4 rounded-lg" placeholder="e.g johndoe996@gmail.com" id="email" />
         </div>
         <div className="lg:w-1/2 w-full mx-auto">
         <div className=" mb-3">
           Phone Number
         </div>
-        <input required type="number" className=" lg:h-11 lg:w-full  h-10 w-min_rectangle lg:ml-2 mx-auto border-gray-400 border-2 placeholder-gray-400 lg:text-sm text-xs pl-4 rounded-lg" placeholder="e.g 2349078044747" id="phone_number" />
+        <input onChange={handleChange} required type="number" className=" lg:h-11 lg:w-full  h-10 w-min_rectangle lg:ml-2 mx-auto border-gray-400 border-2 placeholder-gray-400 lg:text-sm text-xs pl-4 rounded-lg" placeholder="e.g 2349078044747" id="phone_number" />
         </div>
       </div>
       <div className="mb-2 lg:w-rectangle w-min_rectangle lg:flex">
@@ -39,20 +71,20 @@ export default function CreateAccountStudent() {
         <div className=" mb-3">
           Matric Number
         </div>
-        <input required type="text" className=" lg:h-11 lg:w-full  h-10 w-min_rectangle lg:mr-2 mx-auto border-gray-400 border-2 placeholder-gray-400 lg:text-sm text-xs pl-4 rounded-lg" placeholder="e.g 200591072" id="matric_number" />
+        <input onChange={handleChange} required type="text" className=" lg:h-11 lg:w-full  h-10 w-min_rectangle lg:mr-2 mx-auto border-gray-400 border-2 placeholder-gray-400 lg:text-sm text-xs pl-4 rounded-lg" placeholder="e.g 200591072" id="matric_number" />
         </div>
         <div className="lg:w-1/2 w-full mx-auto">
         <div className=" mb-3">
           Jamb Number
         </div>
-        <input required type="text" className=" lg:h-11 lg:w-full  h-10 w-min_rectangle lg:ml-2 mx-auto border-gray-400 border-2 placeholder-gray-400 lg:text-sm text-xs pl-4 rounded-lg" placeholder="e.g 21593666CF" id="jamb_number" />
+        <input onChange={handleChange} required type="text" className=" lg:h-11 lg:w-full  h-10 w-min_rectangle lg:ml-2 mx-auto border-gray-400 border-2 placeholder-gray-400 lg:text-sm text-xs pl-4 rounded-lg" placeholder="e.g 21593666CF" id="jamb_number" />
         </div>
       </div>
       <div className="mb-2">
       <div className=" mb-3">
           Gender
         </div>
-      <select className=" lg:h-11 lg:w-rectangle w-min_rectangle h-10 mx-auto border-green-500 border-2 placeholder-gray-400 lg:text-sm text-xs pl-4 rounded-lg" id="gender">
+      <select onChange={handleSelect} className=" lg:h-11 lg:w-rectangle w-min_rectangle h-10 mx-auto border-green-500 border-2 placeholder-gray-400 lg:text-sm text-xs pl-4 rounded-lg" id="gender">
         <option>Please Select Gender</option>
         <option>Male</option>
         <option>Female</option>
@@ -63,17 +95,17 @@ export default function CreateAccountStudent() {
         <div className=" mb-3">
           Password
         </div>
-        <input required type="password" className=" lg:h-11 lg:w-full  h-10 w-min_rectangle lg:mr-2 mx-auto border-gray-400 border-2 placeholder-gray-400 lg:text-sm text-xs pl-4 rounded-lg" placeholder="*******" id="password" />
+        <input onChange={handleChange} required type="password" className=" lg:h-11 lg:w-full  h-10 w-min_rectangle lg:mr-2 mx-auto border-gray-400 border-2 placeholder-gray-400 lg:text-sm text-xs pl-4 rounded-lg" placeholder="*******" id="password" />
         </div>
         <div className="lg:w-1/2 w-full mx-auto">
         <div className=" mb-3">
           Confirm Password
         </div>
-        <input required type="password" className=" lg:h-11 lg:w-full  h-10 w-min_rectangle lg:ml-2 mx-auto border-gray-400 border-2 placeholder-gray-400 lg:text-sm text-xs pl-4 rounded-lg" placeholder="*******" id="confirm_password" />
+        <input onChange={handleChange} required type="password" className=" lg:h-11 lg:w-full  h-10 w-min_rectangle lg:ml-2 mx-auto border-gray-400 border-2 placeholder-gray-400 lg:text-sm text-xs pl-4 rounded-lg" placeholder="*******" id="confirm_password" />
         </div>
       </div>
       <div className=" mb-6 text-green-500 flex flex-row-reverse font-semibold text-sm cursor-pointer">Forgot Password?</div>
-      <div className="bg-green-500 text-white h-11 mlg:x-auto lg:w-rectangle w-min_rectangle h-10 flex items-center justify-center rounded-lg font-semibold text-sm mb-4 cursor-pointer hover:bg-white hover:text-green-500 transform hover:scale-110 transition-all duration-700 border-2 border-green-500" id="submit">Login</div>
+      <div className="bg-green-500 text-white h-11 mlg:x-auto lg:w-rectangle w-min_rectangle h-10 flex items-center justify-center rounded-lg font-semibold text-sm mb-4 cursor-pointer hover:bg-white hover:text-green-500 transform hover:scale-110 transition-all duration-700 border-2 border-green-500" id="submit" onClick={submitForm}>Create Account</div>
       <div className="text-center font-semibold text-sm">
         Are you new here? <span className="text-green-500">Sign Up</span>
       </div>
