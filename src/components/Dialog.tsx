@@ -30,7 +30,7 @@ export default function ModalDialog({open, setOpen, Button:ModalButton, children
   };
 
   return (
-    <div>
+    <>
       {/* <Button variant="outlined" onClick={handleClickOpen}>
         Slide in alert dialog
       </Button> */}
@@ -69,6 +69,6 @@ export default function ModalDialog({open, setOpen, Button:ModalButton, children
           <Button onClick={handleClose}>Agree</Button> */}
         </DialogActions>
       </Dialog>
-    </div>
+    </>
   );
 }

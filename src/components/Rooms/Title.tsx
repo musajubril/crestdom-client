@@ -22,6 +22,7 @@ const Title = () => {
       setState({...state, [e.target.id]: e.target.value})
     }
     const handleSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
+      console.log(imageURL.url)
     setState({...state, [e.target.id]: e.target.value})
     }
     const handleImage = (e: any) => {
@@ -48,10 +49,10 @@ const Title = () => {
     }
     )
     const file = await res.json()
-    setImageURL({...imageURL, url:file.secure_url})
-    setImageURL({...imageURL, uploading:false})
-    setImageURL({...imageURL, uploaded:true})
-    console.log(file.secure_url)
+    setImageURL({...imageURL, uploading:false, uploaded:true, url:file?.secure_url})
+    // setImageURL({...imageURL, uploaded:true})
+    // setImageURL({...imageURL, url:file?.secure_url})
+    console.log(file, imageURL.url)
     }
     const { mutate } = useMutation(postRequest, {
       onSuccess(data) {

@@ -13,6 +13,7 @@ import BursarDashboard from "components/BursarModule/Dashboard";
 import StudentRooms from "components/Student/Rooms";
 import CreateAccountAdmin from "components/Auth/CreateAccountAdmin";
 import jwtDecode from "jwt-decode";
+import CreateAccountBursar from "components/Auth/CreateAccountBursar";
 function App() {
   console.log(localStorage?.crescent_token ? jwtDecode(localStorage?.crescent_token) : "No Token Specified")
   return (
@@ -26,6 +27,7 @@ function App() {
               <Route exact path="/bursar" component={BursarDashboard} />
               <Route exact path="/bursar/all" component={BursarList} />
               <Route exact path="/bursar/verified" component={BursarList} />
+              <Route exact path="/bursar/verify-account" component={CreateAccountBursar} />
               <Route exact path="/bursar/not-verified" component={BursarList} />
               <Route exact path="/student" component={StudentDashboard} />
               <Route exact path="/student/rooms" component={StudentRooms} />

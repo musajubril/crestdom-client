@@ -30,7 +30,16 @@ const RoomGrid = ({rooms}) => {
               </h3>
               <h3 className="mt-1 text-gray-900 text-sm font-medium flex w-full text-center justify-center">
                 <span>
-                Number in room: {room.number_acceptable}
+                Number in room: {room.number_in_room}
+                </span>
+                {/* <UsersIcon
+                      className="w-5 h-5 text-green-400"
+                      aria-hidden="true"
+                    /> */}
+              </h3>
+              <h3 className="mt-1 text-gray-900 text-sm font-medium flex w-full text-center justify-center">
+                <span>
+                Room Capacity: {room.number_acceptable}
                 </span>
                 {/* <UsersIcon
                       className="w-5 h-5 text-green-400"

@@ -1,8 +1,13 @@
 import React from 'react';
 import { MailIcon, PhoneIcon, TrashIcon, ShoppingCartIcon, UsersIcon } from "@heroicons/react/solid";
-import { PencilAltIcon } from "@heroicons/react/outline";
+import { PencilAltIcon, CheckIcon } from '@heroicons/react/outline';
+import ModalDialog from 'components/Dialog';
 
 const RoomGrid = ({rooms, showType}) => {
+  const bookedStatus = rooms.filter(room=>room.bookedStatus)
+  console.log(bookedStatus.length)
+  const [open, setOpen] = React.useState(false)
+  const [title, setTitle] = React.useState("")
     return (
         <ul className="grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {rooms?.map((room,i) => (
@@ -27,7 +32,16 @@ const RoomGrid = ({rooms, showType}) => {
               }
               <h3 className="mt-1 text-gray-900 text-sm font-medium flex w-full text-center justify-center">
                 <span>
-                Number in room: {room.number_acceptable}
+                Number in room: {room.number_in_room}
+                </span>
+                {/* <UsersIcon
+                      className="w-5 h-5 text-green-400"
+                      aria-hidden="true"
+                    /> */}
+              </h3>
+              <h3 className="mt-1 text-gray-900 text-sm font-medium flex w-full text-center justify-center">
+                <span>
+                Room Capacity: {room.number_acceptable}
                 </span>
                 {/* <UsersIcon
                       className="w-5 h-5 text-green-400"
@@ -67,16 +81,46 @@ const RoomGrid = ({rooms, showType}) => {
                   </a>
                 </div> */}
                 <div className="-ml-px w-0 flex-1 flex transition-all duration-500 rounded-b-l-lg">
-                  <a
-                    href={`tel:${room.telephone}`}
-                    className="relative w-0 flex-1 inline-flex items-center justify-center py-4 text-sm text-green-600 bg-white font-medium border border-transparent rounded-br-lg hover:text-white hover:bg-green-500  transition-all duration-500 rounded-b-l-lg"
+                <ModalDialog
+                open={open}
+                handleSubmit={""}
+                setOpen={setOpen}
+                Title={title}
+                Button={()=>(
+                  <>
+                  {
+                    room.bookedStatus ?
+                  <button
+                    className="relative w-0 flex-1 inline-flex items-center justify-center py-4 text-sm text-red-600 bg-white font-medium border border-transparent rounded-br-lg hover:text-white hover:bg-red-500  transition-all duration-500 rounded-b-l-lg cursor-pointer" 
+                  disabled={bookedStatus.length}
+                  >
+                    <CheckIcon
+                      className="w-5 h-5"
+                      aria-hidden="true"
+                    />
+                    <span className="ml-3">Booked</span>
+                  </button>
+                  :
+                  <button
+                  disabled={bookedStatus.length}
+                  onClick={()=>{
+                    setOpen(true)
+                    setTitle(`Book ${room.hostel_name} room number ${room.room_number}`)
+                  }}
+                    className="relative w-0 flex-1 inline-flex items-center justify-center py-4 text-sm text-green-600 bg-white font-medium border border-transparent rounded-br-lg hover:text-white hover:bg-green-500  transition-all duration-500 rounded-b-l-lg cursor-pointer"
                   >
                     <ShoppingCartIcon
                       className="w-5 h-5"
                       aria-hidden="true"
-                    />
+                      />
                     <span className="ml-3">Book</span>
-                  </a>
+                  </button>
+                  }
+                  </>
+                )}
+                >
+                  Afa
+                </ModalDialog>
                 </div>
               </div>
             </div>

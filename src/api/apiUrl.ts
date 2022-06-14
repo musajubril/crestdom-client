@@ -3,6 +3,7 @@ export const SIGN_IN = `${API_URL}/auth/login`
 export const SIGN_UP = `${API_URL}/auth/admin-register`
 export const CREATE_STUDENT = `${API_URL}/auth/student-register`
 export const GET_USER = `${API_URL}/auth/user`
+export const VERIFY_BURSAR = `${API_URL}/auth/verify-bursar`
 export const ADD_ROOM = `${API_URL}/admin/add_room`
 export const ADD_BURSAR = `${API_URL}/admin/add_bursar`
 export const GET_BURSAR = `${API_URL}/admin/get_bursar`
