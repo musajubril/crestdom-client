@@ -5,6 +5,7 @@ export const CREATE_STUDENT = `${API_URL}/auth/student-register`
 export const GET_USER = `${API_URL}/auth/user`
 export const VERIFY_BURSAR = `${API_URL}/auth/verify-bursar`
 export const ADD_ROOM = `${API_URL}/admin/add_room`
+export const GET_BOOKINGS = `${API_URL}/admin/get_bookings`
 export const ADD_BURSAR = `${API_URL}/admin/add_bursar`
 export const GET_BURSAR = `${API_URL}/admin/get_bursar`
 export const SEND_TO_BURSAR = id => `${API_URL}/admin/bursar/${id}`
