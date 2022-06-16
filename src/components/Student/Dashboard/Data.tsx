@@ -74,7 +74,28 @@ gender: '',
       </dl>
         </div>
         <div className="col-span-1">
-            <img className="rounded-lg" src={require("../../../images/rm7.jpg")} alt="" />
+            <img className="rounded-lg shadow  transform transition-all hover:scale-105 duration-500 hover:shadow-lg" src={book?.image} alt="" />
+            <dl className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2">
+        {[
+            {name: "Hostel Name", stat:book?.hostel_name},
+            {name: "Room Number", stat:book?.room_number},
+            {name: "Price", stat:`#${book?.hostel_name}`},
+            {name: "Verification Status", stat:book?.verified ? "Verified" : "Not Verified"},
+            {name: "Bursar Info", stat:book?.send_to_bursar ? "Sent" : "Not Sent"},
+            {name: "Hostel Name", stat:book?.hostel_name}
+        ].map((item) => (
+            <div key={item.name} className="px-4 py-5 bg-white shadow rounded-lg overflow-hidden sm:p-6 transform transition-all hover:scale-105 duration-500 hover:shadow-lg">
+            <dt className="text-sm font-medium text-gray-500 truncate">{item.name}</dt>
+            <dd className="mt-1 font-semibold text-gray-900">{item.stat}</dd>
+          </div>
+        ))}
+      </dl>
+        </div>
+        <div className="col-span">
+            <img src={book?.proof_of_payment_school_fee} alt="" className="rounded-lg shadow transform transition-all hover:scale-105 duration-500 hover:shadow-lg" />
+        </div>
+        <div className="col-span">
+            <img src={book?.proof_of_payment_hostel_fee} alt="" className="rounded-lg shadow transform transition-all hover:scale-105 duration-500 hover:shadow-lg" />
         </div>
     </div>
   )
