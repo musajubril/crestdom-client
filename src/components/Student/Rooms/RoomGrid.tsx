@@ -81,7 +81,7 @@ const RoomGrid = ({rooms, showType}) => {
   }
   const { mutate } = useMutation(postRequest, {
     onSuccess(data) {
-      alert("Room Added Successfully")
+      alert("Room Booked Successfully")
       setOpen(false)
       // props.history.push("/login", "/login")
     },
