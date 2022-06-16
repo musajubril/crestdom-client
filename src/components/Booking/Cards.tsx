@@ -67,7 +67,7 @@ export default function Cards({students, school, send}) {
           </div>
           <div>
             <div className="-mt-px flex divide-x divide-gray-200">
-            <Link to={`/${school}/result/${student.id}`} className="-ml-px w-0 flex-1 flex sm:hidden">
+            <div className="-ml-px w-0 flex-1 flex sm:hidden">
               <>
                   <button
                     onClick={()=>send(student?._id)}
@@ -94,7 +94,7 @@ export default function Cards({students, school, send}) {
                 }
                 </button>
               </>
-              </Link>
+              </div>
             </div>
           </div>
         </li>

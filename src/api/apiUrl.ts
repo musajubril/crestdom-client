@@ -8,6 +8,7 @@ export const ADD_ROOM = `${API_URL}/admin/add_room`
 export const GET_BOOKINGS = `${API_URL}/admin/get_bookings`
 export const ADD_BURSAR = `${API_URL}/admin/add_bursar`
 export const GET_BURSAR = `${API_URL}/admin/get_bursar`
+export const ADMINDASHBOARD = `${API_URL}/admin/dashboard`
 export const SEND_TO_BURSAR = id => `${API_URL}/admin/bursar/${id}`
 export const SET_NOT_VERIFIED =(id: any)=> `${API_URL}/bursar/not_verified${id}`
 export const SET_VERIFIED =(id: any)=> `${API_URL}/bursar/verified${id}`

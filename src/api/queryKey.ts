@@ -4,5 +4,6 @@ export const queryKeys = {
   getAllRooms: "getAllRooms",
   getBookings: "getBookings",
   getBooking: "getBooking",
+  adminDashboard: "adminDashboard",
   
 }
