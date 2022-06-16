@@ -92,6 +92,7 @@ const RoomGrid = ({rooms, showType}) => {
     hostel_name: null,
     price: null
   })
+  console.log(roomData)
   const BookRoom = () => {
     mutate({
       url: BOOK_ROOM,
