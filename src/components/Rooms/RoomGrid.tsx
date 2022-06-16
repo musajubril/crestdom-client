@@ -64,7 +64,7 @@ const RoomGrid = ({rooms}) => {
                 </dd>
               </dl>
             </div>
-            <div>
+            {/* <div>
               <div className="-mt-px flex divide-x divide-gray-200">
                 <div className="w-0 flex-1 flex">
                   <a
@@ -91,7 +91,7 @@ const RoomGrid = ({rooms}) => {
                   </a>
                 </div>
               </div>
-            </div>
+            </div> */}
           </li>
         ))}
       </ul>
