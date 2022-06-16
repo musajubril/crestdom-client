@@ -24,16 +24,37 @@ gender: '',
                     {name:"Gender",stat: user.gender}
       ]
   return (
-    <div>
+    <div className="grid lg:grid-cols-2 grid-cols-1 gap-10 mt-5">
       {/* <h3 className="text-lg leading-6 font-medium text-gray-900">Last 30 days</h3> */}
-      <dl className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-3">
+      <div className="col-span-1">
+      <div className="rounded-lg bg-white overflow-hidden shadow transform transition-all hover:scale-105 duration-500 hover:shadow-lg">
+      <div className="bg-white p-6 h-full">
+        <div className="sm:flex sm:items-center sm:justify-between h-full">
+          <div className="sm:flex sm:space-x-5 h-full">
+            <div className="flex-shrink-0">
+              <img className="mx-auto h-32 w-32 object-contain object-center" src={user?.gender === "Male"
+                                  ? "https://res.cloudinary.com/jewbreel1/image/upload/v1625737172/jewbreel/sms/male_avatar_c3v0vu.png"
+                                  : "https://res.cloudinary.com/jewbreel1/image/upload/v1625737170/jewbreel/sms/female_avatar_pgqx9s.png"} alt="" />
+              {/* <img className="mx-auto h-20 w-20 object-cover object-center" src={"/img/logo.jpeg"} alt="" /> */}
+            </div>
+            <div className="mt-4 text-center sm:mt-0 sm:pt-1 sm:text-left flex-col items-center justify-center flex">
+              {/* <p className="text-sm font-medium text-gray-600">Welcome back,</p> */}
+              <p className="text-xl font-bold text-gray-900 sm:text-2xl">{user?.full_name}</p>
+              <p className="text-sm font-medium text-gray-600 capitalize">Here is your summary</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      <dl className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2">
         {stats.map((item) => (
-          <div key={item.name} className="px-4 py-5 bg-white shadow rounded-lg overflow-hidden sm:p-6 transform transition-all hover:scale-105 duration-500 hover:shadow-lg">
+            <div key={item.name} className="px-4 py-5 bg-white shadow rounded-lg overflow-hidden sm:p-6 transform transition-all hover:scale-105 duration-500 hover:shadow-lg">
             <dt className="text-sm font-medium text-gray-500 truncate">{item.name}</dt>
             <dd className="mt-1 font-semibold text-gray-900">{item.stat}</dd>
           </div>
         ))}
       </dl>
+        </div>
     </div>
   )
 }
