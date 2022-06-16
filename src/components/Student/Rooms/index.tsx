@@ -38,7 +38,7 @@ if(props.history.location.pathname !== "/student/private"){
         setNewRoom(checked)
       }
       else{
-        setNewRoom(checkBookedStatus?.length && checked?.length ? [checkBookedStatus[0], ...checked] : checked)
+        setNewRoom(checkBookedStatus?.length ? checked?.length ? [checkBookedStatus[0], ...checked] : [checkBookedStatus[0]] : checked)
       }
     }
     else{
@@ -48,10 +48,11 @@ if(props.history.location.pathname !== "/student/private"){
   else{
     if(checkBookedStatus) {
       if(checkBookedStatus[0]?.type!=="General"){
-          setNewRoom(checked)
-        }
-        else{
-          setNewRoom(checkBookedStatus?.length && checked?.length ? [checkBookedStatus[0], ...checked] : checked)
+        setNewRoom(checked)
+      }
+      else{
+          setNewRoom(checkBookedStatus?.length ? checked?.length ? [checkBookedStatus[0], ...checked] : [checkBookedStatus[0]] : checked)
+          // setNewRoom(checkBookedStatus?.length && checked?.length ? [checkBookedStatus[0], ...checked] : checked)
         }
       }
       else{
