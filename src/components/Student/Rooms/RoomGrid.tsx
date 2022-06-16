@@ -152,7 +152,7 @@ const RoomGrid = ({rooms, showType}) => {
                 #{room.price}
               </h3>
               <dl className="mt-1 flex-grow flex flex-col justify-between">
-                <dd className="mt-1">
+                <dd className="">
                     {
                     room.availability ?
                   <span className="px-2 py-1 text-green-800 text-xs font-medium bg-green-100 rounded-full">
@@ -165,6 +165,23 @@ const RoomGrid = ({rooms, showType}) => {
                     }
                 </dd>
               </dl>
+              {
+                room.bookedStatus &&
+              <dl className="mt-1 flex-grow flex flex-col justify-between">
+                <dd className="">
+                    {
+                    room.verified ?
+                  <span className="px-2 py-1 text-green-800 text-xs font-medium bg-green-100 rounded-full">
+                  Verified
+                  </span>
+                  :
+                  <span className="px-2 py-1 text-red-800 text-xs font-medium bg-red-100 rounded-full">
+                    Not Verified
+                  </span>
+                    }
+                </dd>
+              </dl>
+              }
             </div>
             <div>
               <div className="-mt-px flex divide-x divide-gray-200">
