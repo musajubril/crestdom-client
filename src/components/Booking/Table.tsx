@@ -1,6 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom";
-export default function Table({ students, school }) {
+export default function Table({ students, school, send }) {
   return (
     <div className="hidden sm:flex flex-col">
       <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -39,6 +39,9 @@ export default function Table({ students, school }) {
                   >
                     Age
                   </th> */}
+                  <th scope="col" className="relative px-6 py-3">
+                    <span className="sr-only">Action</span>
+                  </th>
                   <th scope="col" className="relative px-6 py-3">
                     <span className="sr-only">Action</span>
                   </th>
@@ -92,14 +95,14 @@ export default function Table({ students, school }) {
                           {person.gender}
                         </div>
                       </td> */}
-                      {!person.is_verified && (
+                      {person.verified && (
                         <td className="px-6 py-4 whitespace-nowrap">
                           <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
                             Verified
                           </span>
                         </td>
                       )}
-                      {person.is_verified && (
+                      {!person.verified && (
                         <td className="px-6 py-4 whitespace-nowrap">
                           <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
                             Not Verified
@@ -110,14 +113,27 @@ export default function Table({ students, school }) {
                         {person.age}
                       </td> */}
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                      <a href={`/${school}/result/${person.id}`} target="_blank" className="text-green-600 hover:text-green-900">
-                        View
+                      <a href={`${person?.proof_of_payment_school_fee}`} target="_blank" className="text-green-600 hover:text-green-900">
+                        School Fee
                       </a>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                      <a href={`/${school}/result/${person.id}`} target="_blank" className="text-green-600 hover:text-green-900">
-                        Send To Bursar
+                      <a href={`${person?.proof_of_payment_hostel_fee}`} target="_blank" className="text-green-600 hover:text-green-900">
+                        Hostel Fee
                       </a>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        {
+                          person?.send_to_bursar
+                          ?
+                      <button className="text-green-600 hover:text-green-900" disabled={person?.send_to_bursar}>
+                        Sent
+                      </button>
+                          :
+                      <button onClick={()=>send(person?._id)} className="text-green-600 hover:text-green-900">
+                        Send To Bursar
+                      </button>
+                        }
                       </td>
                     </tr>
                 ))}

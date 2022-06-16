@@ -14,13 +14,13 @@ export default function Cards({students, school}) {
               <div className="flex items-center space-x-3">
                 <h3 className="text-gray-900 text-sm font-medium">{student.full_name}</h3>
                 {
-                  student.is_verified && 
+                  student.verified && 
                 <span className="flex-shrink-0 inline-block px-2 py-0.5 text-red-800 text-xs font-medium bg-red-100 rounded-full">
                   Not Verified
                 </span>
                 }
                 {
-                  !student.is_verified && 
+                  !student.verified && 
                 <span className="flex-shrink-0 inline-block px-2 py-0.5 text-green-800 text-xs font-medium bg-green-100 rounded-full">
                   Verified
                 </span>

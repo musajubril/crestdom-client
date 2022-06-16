@@ -2,66 +2,12 @@ import React from "react";
 import Layout from "./../Layout";
 import Table from "./Table";
 import Cards from "./Cards";
-import { GET_BOOKINGS } from '../../api/apiUrl';
-import { getRequest } from "api/apiCall";
+import { GET_BOOKINGS, SEND_TO_BURSAR } from '../../api/apiUrl';
+import { getRequest, postRequest } from "api/apiCall";
 import { queryKeys } from "api/queryKey";
-import { useQuery } from "react-query";
+import { useMutation, useQuery } from "react-query";
 
 const Booking = () => {
-  // const MockData = [
-  //   {
-  //     full_name: "Jubril Musa",
-  //     email: "jewbreel1@gmail.com",
-  //     matric_number: "200591072",
-  //     class_name: "Computer Science 100L",
-  //     gender: "Male",
-  //     is_verified: true,
-  //     age: "20",
-  //     image: "",
-
-  //     hostel_name: "Medeyomi Flat",
-  //     room_number: "20"
-  //   },
-  //   {
-  //     full_name: "Lawal Habeebah",
-  //     email: "damolabee5@gmail.com",
-  //     matric_number: "200591072",
-  //     class_name: "Computer Science 500L",
-  //     gender: "Female",
-  //     is_verified: false,
-  //     age: "20",
-  //     image: "",
-
-  //     hostel_name: "Medeyomi Flat",
-  //     room_number: "20"
-  //   },
-  //   {
-  //     full_name: "Jubril Musa",
-  //     email: "jewbreel1@gmail.com",
-  //     matric_number: "200591072",
-  //     class_name: "Computer Science 100L",
-  //     gender: "Male",
-  //     is_verified: true,
-  //     age: "20",
-  //     image: "",
-
-  //     hostel_name: "Medeyomi Flat",
-  //     room_number: "20"
-  //   },
-  //   {
-  //     full_name: "Lawal Habeebah",
-  //     email: "damolabee5@gmail.com",
-  //     matric_number: "200591072",
-  //     class_name: "Computer Science 500L",
-  //     gender: "Female",
-  //     is_verified: false,
-  //     age: "20",
-  //     image: "",
-
-  //     hostel_name: "Medeyomi Flat",
-  //     room_number: "20"
-  //   }
-  // ];
   const {
     data
   } = useQuery(
@@ -75,14 +21,42 @@ const [rooms, setRooms] = React.useState(data?.data)
 React.useEffect(()=>{
   setRooms(data?.data)
 },[data?.data])
+const { mutate } = useMutation(postRequest, {
+  onSuccess(data) {
+    alert("Success")
+  },
+  onError(){
+    alert("Failed")
+  }
+});
+// const AddNewRoom = () => {
+//   mutate({
+//     url: ADD_ROOM,
+//     data: {
+//       image: imageURL.url,
+//       type: state.type,
+//       room_number: state.room_number,
+//   number_acceptable: state.number_acceptable,
+//   hostel_name: state.hostel_name,
+//   gender: state.gender,
+//   price: state.price
+//     },
+//   });
+// }
+const SendToBursar = (id: any) => {
+  mutate({
+        url: SEND_TO_BURSAR(id),
+        data:{}
+  })
+}
 console.log(rooms)
   return (
     <Layout page="Bookings">
       <div className="hidden md:block">
-        <Table students={rooms} school="test" />
+        <Table students={rooms} school="test" send={SendToBursar} />
       </div>
       <div className="md:hidden">
-        <Cards students={rooms} school="test" />
+        <Cards students={rooms} school="test" send={SendToBursar} />
       </div>
     </Layout>
   );

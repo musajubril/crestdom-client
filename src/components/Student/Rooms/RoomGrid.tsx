@@ -90,7 +90,8 @@ const RoomGrid = ({rooms, showType}) => {
     room_id: null,
     room_number: null,
     hostel_name: null,
-    price: null
+    price: null,
+    admin_id: null
   })
   console.log(roomData)
   const BookRoom = () => {
@@ -102,7 +103,8 @@ const RoomGrid = ({rooms, showType}) => {
                       hostel_name: roomData.hostel_name,
                       proof_of_payment_school_fee: schoolFee.url,
                        proof_of_payment_hostel_fee: hostelFee.url,
-                       price: roomData.price
+                       price: roomData.price,
+                       admin_id: roomData.admin_id
       },
     });
   }
@@ -209,7 +211,8 @@ const RoomGrid = ({rooms, showType}) => {
                       room_id: room._id,
                       room_number: room.room_number,
                       hostel_name: room.hostel_name,
-                      price: room.price
+                      price: room.price,
+                      admin_id: room.admin_id
                     })
                   }}
                     className="relative w-0 flex-1 inline-flex items-center justify-center py-4 text-sm text-green-600 bg-white font-medium border border-transparent rounded-br-lg hover:text-white hover:bg-green-500  transition-all duration-500 rounded-b-l-lg cursor-pointer"

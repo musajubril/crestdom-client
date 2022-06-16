@@ -38,13 +38,14 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Layout({ children, page }) {
+export default function Layout({ children, page, props }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const logOut = (e: any) => {
     e.preventDefault();
-    localStorage.removeItem("crescent_token");
+    // props.history.push("/login", "login");
+    window.location.href="/login"
     alert("log out successful");
-    window.location.href = "/login";
+    localStorage.removeItem("crescent_token");
   };
   // const user:{fullName: any, image: any, email: any} = jwtDecode(localStorage?.getItem("crescent_token"))
   return (

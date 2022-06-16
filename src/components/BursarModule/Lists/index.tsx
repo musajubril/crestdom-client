@@ -12,7 +12,7 @@ const BursarList = (props) => {
       matric_number: "200591072",
       class_name: "Computer Science 100L",
       gender: "Male",
-      is_verified: true,
+      verified: true,
       age: "20",
       image: "",
 
@@ -25,7 +25,7 @@ const BursarList = (props) => {
       matric_number: "200591072",
       class_name: "Computer Science 500L",
       gender: "Female",
-      is_verified: false,
+      verified: false,
       age: "20",
       image: "",
 
@@ -38,7 +38,7 @@ const BursarList = (props) => {
       matric_number: "200591072",
       class_name: "Computer Science 100L",
       gender: "Male",
-      is_verified: true,
+      verified: true,
       age: "20",
       image: "",
 
@@ -51,7 +51,7 @@ const BursarList = (props) => {
       matric_number: "200591072",
       class_name: "Computer Science 500L",
       gender: "Female",
-      is_verified: false,
+      verified: false,
       age: "20",
       image: "",
 
@@ -59,7 +59,7 @@ const BursarList = (props) => {
       room_number: "20"
     }
   ];
-  const mock = props.history.location.pathname === "/bursar/verified" ? MockData.filter(check=>!check.is_verified) : props.history.location.pathname === "/bursar/not-verified" ?  MockData.filter(check=>check.is_verified) : MockData
+  const mock = props.history.location.pathname === "/bursar/verified" ? MockData.filter(check=>!check.verified) : props.history.location.pathname === "/bursar/not-verified" ?  MockData.filter(check=>check.verified) : MockData
   const page = props.history.location.pathname === "/bursar/verified" ? "Verified" : props.history.location.pathname === "/bursar/not-verified" ?  "Not Verified" : "All"
 
     return (
