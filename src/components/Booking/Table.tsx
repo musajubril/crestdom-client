@@ -55,7 +55,7 @@ export default function Table({ students, school, send }) {
                 id="Students"
               >
                 {students?.map((person) => (
-                    <tr className="bg-gray-50 hover:bg-gray-200 transform transition-all duration-500 hover:scale-95">
+                    <tr className="bg-gray-50 hover:bg-gray-200 transform transition-all duration-500">
                       <td className="px-6 hidden sm:inline py-4 whitespace-nowrap cursor-pointer">
                   <Link to={`/${school}/school/student/${person.id}`}>
                         <div className="flex items-center">

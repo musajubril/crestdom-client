@@ -2,73 +2,52 @@ import React from 'react';
 import Layout from './../Layout';
 import Table from './Table';
 import Cards from './Cards';
+import { GET_BURSAR_BOOKINGS, SET_VERIFIED } from 'api/apiUrl';
+import { getRequest, postRequest } from 'api/apiCall';
+import { queryKeys } from 'api/queryKey';
+import { useMutation, useQuery } from 'react-query';
 
 const BursarList = (props) => {
   console.log(props.history)
      const MockData = [
-    {
-      full_name: "Jubril Musa",
-      email: "jewbreel1@gmail.com",
-      matric_number: "200591072",
-      class_name: "Computer Science 100L",
-      gender: "Male",
-      verified: true,
-      age: "20",
-      image: "",
-
-      hostel_name: "Medeyomi Flat",
-      room_number: "20"
-    },
-    {
-      full_name: "Lawal Habeebah",
-      email: "damolabee5@gmail.com",
-      matric_number: "200591072",
-      class_name: "Computer Science 500L",
-      gender: "Female",
-      verified: false,
-      age: "20",
-      image: "",
-
-      hostel_name: "Medeyomi Flat",
-      room_number: "20"
-    },
-    {
-      full_name: "Jubril Musa",
-      email: "jewbreel1@gmail.com",
-      matric_number: "200591072",
-      class_name: "Computer Science 100L",
-      gender: "Male",
-      verified: true,
-      age: "20",
-      image: "",
-
-      hostel_name: "Medeyomi Flat",
-      room_number: "20"
-    },
-    {
-      full_name: "Lawal Habeebah",
-      email: "damolabee5@gmail.com",
-      matric_number: "200591072",
-      class_name: "Computer Science 500L",
-      gender: "Female",
-      verified: false,
-      age: "20",
-      image: "",
-
-      hostel_name: "Medeyomi Flat",
-      room_number: "20"
-    }
+    
   ];
-  const mock = props.history.location.pathname === "/bursar/verified" ? MockData.filter(check=>!check.verified) : props.history.location.pathname === "/bursar/not-verified" ?  MockData.filter(check=>check.verified) : MockData
+  const {
+    data
+  } = useQuery(
+    [queryKeys.getBookings],
+    async () => await getRequest({ url: GET_BURSAR_BOOKINGS }),
+    {
+      retry: 2,
+    }
+    )
+const [rooms, setRooms] = React.useState(data?.data)
+React.useEffect(()=>{
+  setRooms(data?.data)
+},[data?.data])
+  const mock = props.history.location.pathname === "/bursar/verified" ? rooms?.filter(check=>check.verified) : props.history.location.pathname === "/bursar/not-verified" ?  rooms?.filter(check=>!check.verified) : rooms
   const page = props.history.location.pathname === "/bursar/verified" ? "Verified" : props.history.location.pathname === "/bursar/not-verified" ?  "Not Verified" : "All"
-
+  const { mutate } = useMutation(postRequest, {
+    onSuccess(data) {
+      alert("Success")
+    },
+    onError(){
+      alert("Failed")
+    }
+  });
+  const VerifyBooking = (id: any) => {
+    mutate({
+          url: SET_VERIFIED(id),
+          data:{}
+    })
+  }
     return (
         <Layout page={page}>
             <div className="hidden md:block mt-8">
-        <Table students={mock} school="test" />
+        <Table students={mock} school="test" verify={VerifyBooking} />
       </div>
       <div className="md:hidden mt-5">
-        <Cards students={mock} school="test" />
+        <Cards students={mock} school="test" verify={VerifyBooking} />
       </div>
         </Layout>
     );

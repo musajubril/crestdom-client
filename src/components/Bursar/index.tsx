@@ -3,70 +3,33 @@ import Layout from './../Layout';
 import Header from './Header';
 import Table from './Table';
 import Cards from './Cards';
+import { GET_BURSAR_BOOKINGS } from 'api/apiUrl';
+import { getRequest } from 'api/apiCall';
+import { queryKeys } from 'api/queryKey';
+import { useQuery } from 'react-query';
 
 const Bursar = () => {
-     const MockData = [
+  const {
+    data
+  } = useQuery(
+    [queryKeys.getBookings],
+    async () => await getRequest({ url: GET_BURSAR_BOOKINGS }),
     {
-      full_name: "Jubril Musa",
-      email: "jewbreel1@gmail.com",
-      matric_number: "200591072",
-      class_name: "Computer Science 100L",
-      gender: "Male",
-      is_verified: true,
-      age: "20",
-      image: "",
-
-      hostel_name: "Medeyomi Flat",
-      room_number: "20"
-    },
-    {
-      full_name: "Lawal Habeebah",
-      email: "damolabee5@gmail.com",
-      matric_number: "200591072",
-      class_name: "Computer Science 500L",
-      gender: "Female",
-      is_verified: false,
-      age: "20",
-      image: "",
-
-      hostel_name: "Medeyomi Flat",
-      room_number: "20"
-    },
-    {
-      full_name: "Jubril Musa",
-      email: "jewbreel1@gmail.com",
-      matric_number: "200591072",
-      class_name: "Computer Science 100L",
-      gender: "Male",
-      is_verified: true,
-      age: "20",
-      image: "",
-
-      hostel_name: "Medeyomi Flat",
-      room_number: "20"
-    },
-    {
-      full_name: "Lawal Habeebah",
-      email: "damolabee5@gmail.com",
-      matric_number: "200591072",
-      class_name: "Computer Science 500L",
-      gender: "Female",
-      is_verified: false,
-      age: "20",
-      image: "",
-
-      hostel_name: "Medeyomi Flat",
-      room_number: "20"
+      retry: 2,
     }
-  ];
+    )
+const [rooms, setRooms] = React.useState(data?.data)
+React.useEffect(()=>{
+  setRooms(data?.data)
+},[data?.data])
     return (
         <Layout page="Bursar">
             <Header />
             <div className="hidden md:block mt-8">
-        <Table students={MockData} school="test" />
+        <Table students={rooms} school="test" />
       </div>
       <div className="md:hidden mt-5">
-        <Cards students={MockData} school="test" />
+        <Cards students={rooms} school="test" />
       </div>
         </Layout>
     );

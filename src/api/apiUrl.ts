@@ -9,8 +9,9 @@ export const GET_BOOKINGS = `${API_URL}/admin/get_bookings`
 export const ADD_BURSAR = `${API_URL}/admin/add_bursar`
 export const GET_BURSAR = `${API_URL}/admin/get_bursar`
 export const SEND_TO_BURSAR = id => `${API_URL}/admin/bursar/${id}`
-export const SET_NOT_VERIFIED = `${API_URL}/bursar/not_verified`
-export const SET_VERIFIED = `${API_URL}/bursar/verified`
+export const SET_NOT_VERIFIED =(id: any)=> `${API_URL}/bursar/not_verified${id}`
+export const SET_VERIFIED =(id: any)=> `${API_URL}/bursar/verified${id}`
+export const GET_BURSAR_BOOKINGS = `${API_URL}/bursar/bookings`
 export const BOOK_ROOM = `${API_URL}/student/book`
 export const ALL_ROOMS = `${API_URL}/student/rooms`
 export const GET_ALL_ROOMS = `${API_URL}/admin/rooms`

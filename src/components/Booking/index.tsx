@@ -29,20 +29,6 @@ const { mutate } = useMutation(postRequest, {
     alert("Failed")
   }
 });
-// const AddNewRoom = () => {
-//   mutate({
-//     url: ADD_ROOM,
-//     data: {
-//       image: imageURL.url,
-//       type: state.type,
-//       room_number: state.room_number,
-//   number_acceptable: state.number_acceptable,
-//   hostel_name: state.hostel_name,
-//   gender: state.gender,
-//   price: state.price
-//     },
-//   });
-// }
 const SendToBursar = (id: any) => {
   mutate({
         url: SEND_TO_BURSAR(id),

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-export default function Table({ students, school }) {
+export default function Table({ students, school, verify }) {
   return (
     <div className="hidden sm:flex flex-col">
       <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -48,9 +48,9 @@ export default function Table({ students, school }) {
                   <th scope="col" className="relative px-6 py-3">
                     <span className="sr-only">Action</span>
                   </th>
-                  <th scope="col" className="relative px-6 py-3">
+                  {/* <th scope="col" className="relative px-6 py-3">
                     <span className="sr-only">Action</span>
-                  </th>
+                  </th> */}
                 </tr>
               </thead>
               <tbody
@@ -100,14 +100,14 @@ export default function Table({ students, school }) {
                           {person.gender}
                         </div>
                       </td> */}
-                    {!person.verified && (
+                    {person.verified && (
                       <td className="px-6 py-4 whitespace-nowrap">
                         <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
                           Verified
                         </span>
                       </td>
                     )}
-                    {person.verified && (
+                    {!person.verified && (
                       <td className="px-6 py-4 whitespace-nowrap">
                         <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
                           Not Verified
@@ -118,33 +118,25 @@ export default function Table({ students, school }) {
                         {person.age}
                       </td> */}
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                      <a
-                        href={`/${school}/result/${person.id}`}
-                        target="_blank"
-                        className="text-green-600 hover:text-green-900  transform transition-all duration-500"
-                      >
-                        School Fee Receipt
+                      <a href={`${person?.proof_of_payment_school_fee}`} target="_blank" className="text-green-600 hover:text-green-900">
+                        School Fee
                       </a>
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                      <a
-                        href={`/${school}/result/${person.id}`}
-                        target="_blank"
-                        className="text-green-600 hover:text-green-900  transform transition-all duration-500"
-                      >
-                        Hostel Receipt
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                      <a href={`${person?.proof_of_payment_hostel_fee}`} target="_blank" className="text-green-600 hover:text-green-900">
+                        Hostel Fee
                       </a>
-                    </td>
+                      </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                      <div className="bg-green-600 hover:bg-green-900 text-white flex items-center justify-center px-6 py-2 rounded-md  transform transition-all duration-500 cursor-pointer hover:scale-105">
-                        Verify
-                      </div>
+                      <button className="bg-green-600 hover:bg-green-900 text-white flex items-center justify-center px-6 py-2 rounded-md  transform transition-all duration-500 cursor-pointer hover:scale-105" onClick={()=>verify(person?._id)} disabled={person?.verified}>
+                      {person?.verified ? "Verified" : "Verify"}
+                      </button>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    {/* <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                       <div className="bg-red-600 hover:bg-red-900 text-white flex items-center justify-center px-6 py-2 rounded-md  transform transition-all duration-500 cursor-pointer hover:scale-105">
                         Reject
                       </div>
-                    </td>
+                    </td> */}
                   </tr>
                 ))}
               </tbody>

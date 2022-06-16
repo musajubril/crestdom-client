@@ -52,7 +52,7 @@ export default function Table({ students, school }) {
                 id="Students"
               >
                 {students?.map((person) => (
-                    <tr className="bg-gray-50 hover:bg-gray-200 transform transition-all duration-500 hover:scale-95">
+                    <tr className="bg-gray-50 hover:bg-gray-200 transform transition-all duration-500">
                       <td className="px-6 hidden sm:inline py-4 whitespace-nowrap cursor-pointer">
                   <Link to={`/${school}/school/student/${person.id}`}>
                         <div className="flex items-center">
@@ -92,14 +92,14 @@ export default function Table({ students, school }) {
                           {person.gender}
                         </div>
                       </td> */}
-                      {!person.verified && (
+                      {person.verified && (
                         <td className="px-6 py-4 whitespace-nowrap">
                           <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
                             Verified
                           </span>
                         </td>
                       )}
-                      {person.verified && (
+                      {!person.verified && (
                         <td className="px-6 py-4 whitespace-nowrap">
                           <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
                             Not Verified
@@ -110,13 +110,13 @@ export default function Table({ students, school }) {
                         {person.age}
                       </td> */}
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                      <a href={`/${school}/result/${person.id}`} target="_blank" className="text-green-600 hover:text-green-900">
-                        School Fee Receipt
+                      <a href={`${person?.proof_of_payment_school_fee}`} target="_blank" className="text-green-600 hover:text-green-900">
+                        School Fee
                       </a>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                      <a href={`/${school}/result/${person.id}`} target="_blank" className="text-green-600 hover:text-green-900">
-                        Hostel Receipt
+                      <a href={`${person?.proof_of_payment_hostel_fee}`} target="_blank" className="text-green-600 hover:text-green-900">
+                        Hostel Fee
                       </a>
                       </td>
                     </tr>
