@@ -166,7 +166,7 @@ const RoomGrid = ({rooms, showType}) => {
                 </dd>
               </dl>
               {
-                room.bookedStatus &&
+                room?.bookedStatus &&
               <dl className="mt-1 flex-grow flex flex-col justify-between">
                 <dd className="">
                     {
