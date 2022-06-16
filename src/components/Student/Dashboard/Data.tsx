@@ -1,5 +1,9 @@
+import { getRequest } from 'api/apiCall'
+import { STUDENT_BOOKING } from 'api/apiUrl'
+import { queryKeys } from 'api/queryKey'
 import jwtDecode from 'jwt-decode'
 import React from 'react'
+import { useQuery } from 'react-query'
 
 export default function Data() {
     const user:{
@@ -23,6 +27,20 @@ gender: '',
                     {name:"Jamb REG Number",stat: user.jamb_number ? user.jamb_number : ""},
                     {name:"Gender",stat: user.gender}
       ]
+      const {
+        data
+      } = useQuery(
+        [queryKeys.getBooking],
+        async () => await getRequest({ url: STUDENT_BOOKING }),
+        {
+          retry: 2,
+        }
+        )
+    const [book, setBook] = React.useState(data?.data)
+    React.useEffect(()=>{
+        setBook(data?.data)
+    },[data?.data])
+    console.log(book)
   return (
     <div className="grid lg:grid-cols-2 grid-cols-1 gap-10 mt-5">
       {/* <h3 className="text-lg leading-6 font-medium text-gray-900">Last 30 days</h3> */}
@@ -54,6 +72,9 @@ gender: '',
           </div>
         ))}
       </dl>
+        </div>
+        <div className="col-span-1">
+            <img className="rounded-lg" src={require("../../../images/rm7.jpg")} alt="" />
         </div>
     </div>
   )

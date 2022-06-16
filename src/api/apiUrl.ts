@@ -16,4 +16,5 @@ export const BOOK_ROOM = `${API_URL}/student/book`
 export const ALL_ROOMS = `${API_URL}/student/rooms`
 export const GET_ALL_ROOMS = `${API_URL}/admin/rooms`
 export const LATEST_ROOMS = `${API_URL}/student/latest`
+export const STUDENT_BOOKING = `${API_URL}/student/booking`
 
