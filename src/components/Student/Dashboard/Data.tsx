@@ -64,7 +64,7 @@ gender: '',
         </div>
       </div>
     </div>
-      <dl className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2">
+      <dl className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-1">
         {stats.map((item) => (
             <div key={item.name} className="px-4 py-5 bg-white shadow rounded-lg overflow-hidden sm:p-6 transform transition-all hover:scale-105 duration-500 hover:shadow-lg">
             <dt className="text-sm font-medium text-gray-500 truncate">{item.name}</dt>
