@@ -63,12 +63,14 @@ export default function StatsCards({data}) {
         paymentB={Number(data?.totalPrice) - Number(data?.bookingPrice)}
         paymentALabel={"Total Booking"}
         paymentBLabel="Revenue To Be Generated"
+        title="Booking To Revenue Price Chart"
       />
       <DoughnutChart
         paymentA={data?.privatePrice}
         paymentB={data?.generalPrice}
         paymentALabel={"Total Private Room Price"}
         paymentBLabel="Total General Room Price"
+        title="Private To General Hostel Price Chart"
       />
     </div>
     </>
