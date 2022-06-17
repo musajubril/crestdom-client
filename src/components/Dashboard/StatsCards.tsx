@@ -2,6 +2,7 @@ import React from "react"
 import { ArrowSmDownIcon, ArrowSmUpIcon } from '@heroicons/react/solid'
 import { UserGroupIcon, UserIcon, OfficeBuildingIcon, HomeIcon, ClipboardListIcon, CashIcon } from '@heroicons/react/outline'
 import {Link} from "react-router-dom"
+import DoughnutChart from "components/DoughnutChart"
 
 export default function StatsCards({data}) {
 
@@ -55,6 +56,23 @@ export default function StatsCards({data}) {
           </div>
         ))}
       </dl>
+    </div>
+    <div className="grid grid-cols-1 gap-5 my-5 sm:grid-cols-2">
+    
+      <DoughnutChart
+        paymentA={data?.bookingPrice}
+        paymentB={Number(data?.totalPrice) - Number(data?.bookingPrice)}
+        paymentALabel={"Total Booking"}
+        paymentBLabel="Revenue To Be Generated"
+        title="Booking To Revenue Price Chart"
+      />
+      <DoughnutChart
+        paymentA={data?.privatePrice}
+        paymentB={data?.generalPrice}
+        paymentALabel={"Total Private Room Price"}
+        paymentBLabel="Total General Room Price"
+        title="Private To General Hostel Price Chart"
+      />
     </div>
     </>
   )
