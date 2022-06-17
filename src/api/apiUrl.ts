@@ -13,6 +13,7 @@ export const SEND_TO_BURSAR = id => `${API_URL}/admin/bursar/${id}`
 export const SET_NOT_VERIFIED =(id: any)=> `${API_URL}/bursar/not_verified${id}`
 export const SET_VERIFIED =(id: any)=> `${API_URL}/bursar/verified${id}`
 export const GET_BURSAR_BOOKINGS = `${API_URL}/bursar/bookings`
+export const BURSARDASHBOARD = `${API_URL}/bursar/dashboard`
 export const BOOK_ROOM = `${API_URL}/student/book`
 export const ALL_ROOMS = `${API_URL}/student/rooms`
 export const GET_ALL_ROOMS = `${API_URL}/admin/rooms`

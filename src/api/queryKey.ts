@@ -5,5 +5,6 @@ export const queryKeys = {
   getBookings: "getBookings",
   getBooking: "getBooking",
   adminDashboard: "adminDashboard",
+  bursarDashboard: "bursarDashboard",
   
 }
