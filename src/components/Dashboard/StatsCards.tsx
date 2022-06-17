@@ -31,7 +31,7 @@ export default function StatsCards({data}) {
         {stats.map((item, i) => (
           <div
             key={i}
-            className="relative bg-white pt-5 px-4 pb-12 sm:pt-6 sm:px-6 shadow rounded-lg overflow-hidden"
+            className="relative bg-white pt-5 px-4 pb-12 sm:pt-6 sm:px-6 shadow rounded-lg overflow-hidden transform transition-all hover:scale-105 duration-500 hover:shadow-lg"
           >
             <dt>
               <div className="absolute bg-green-500 rounded-md p-3">
