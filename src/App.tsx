@@ -15,7 +15,6 @@ import CreateAccountAdmin from "components/Auth/CreateAccountAdmin";
 import jwtDecode from "jwt-decode";
 import CreateAccountBursar from "components/Auth/CreateAccountBursar";
 function App() {
-  console.log(localStorage?.crescent_token ? jwtDecode(localStorage?.crescent_token) : "No Token Specified")
   return (
     <>
     <BrowserRouter>
