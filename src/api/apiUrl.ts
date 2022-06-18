@@ -10,8 +10,8 @@ export const ADD_BURSAR = `${API_URL}/admin/add_bursar`
 export const GET_BURSAR = `${API_URL}/admin/get_bursar`
 export const ADMINDASHBOARD = `${API_URL}/admin/dashboard`
 export const SEND_TO_BURSAR = id => `${API_URL}/admin/bursar/${id}`
-export const SET_NOT_VERIFIED =(id: any)=> `${API_URL}/bursar/not_verified${id}`
-export const SET_VERIFIED =(id: any)=> `${API_URL}/bursar/verified${id}`
+export const SET_NOT_VERIFIED =(id: any)=> `${API_URL}/bursar/not_verified/${id}`
+export const SET_VERIFIED =(id: any)=> `${API_URL}/bursar/verified/${id}`
 export const GET_BURSAR_BOOKINGS = `${API_URL}/bursar/bookings`
 export const BURSARDASHBOARD = `${API_URL}/bursar/dashboard`
 export const BOOK_ROOM = `${API_URL}/student/book`
