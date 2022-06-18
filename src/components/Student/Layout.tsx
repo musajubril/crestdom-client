@@ -45,7 +45,7 @@ export default function Layout({ children, page, props }) {
     // props.history.push("/login", "login");
     window.location.href="/login"
     alert("log out successful");
-    localStorage.removeItem("crescent_token");
+    // localStorage.removeItem("crescent_token");
   };
   // const user:{fullName: any, image: any, email: any} = jwtDecode(localStorage?.getItem("crescent_token"))
   return (

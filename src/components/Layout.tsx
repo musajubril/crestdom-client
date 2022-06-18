@@ -37,7 +37,7 @@ export default function Layout({ children, page }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const logOut = (e: any) => {
     e.preventDefault();
-    localStorage.removeItem("crescent_token");
+    // localStorage.removeItem("crescent_token");
     alert("log out successful");
     window.location.href = "/login";
   };
