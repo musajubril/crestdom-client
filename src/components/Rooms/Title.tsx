@@ -60,6 +60,9 @@ const Title = () => {
         setOpen(false)
         // props.history.push("/login", "/login")
       },
+      onError(){
+        alert("failed")
+      }
     });
     const AddNewRoom = () => {
       mutate({

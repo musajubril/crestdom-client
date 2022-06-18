@@ -18,6 +18,9 @@ export default function CreateAccountAdmin(props) {
       alert("Admin Account Created Successfully")
       props.history.push("/login", "/login")
     },
+    onError(){
+      alert("Account creation failed")
+    }
   });
   const submitForm = (e: any) => {
     e.preventDefault();

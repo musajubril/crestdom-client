@@ -18,6 +18,9 @@ export default function CreateAccountBursar(props) {
       alert("Bursar account validated Successfully")
       props.history.push("/login", "/login")
     },
+    onError() {
+      alert("Bursar account validation failed")
+    },
   });
   const submitForm = (e: any) => {
     e.preventDefault();

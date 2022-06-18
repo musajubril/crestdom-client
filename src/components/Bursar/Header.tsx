@@ -52,6 +52,9 @@ const Header = () => {
           setOpen(false)
           // props.history.push("/login", "/login")
         },
+        onError(){
+          alert("Can't update Bursar's info at the moment")
+        }
       });
       const EditBursar = () => {
         mutate({

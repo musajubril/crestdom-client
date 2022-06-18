@@ -26,6 +26,9 @@ export default function CreateAccountStudent(props) {
         alert(`${state.full_name} account created successfully`)
         props.history.push("/login", "/login")
       },
+      onError() {
+        alert(`${state.full_name} account creation failed`)
+      },
     });
     const submitForm = (e: any) => {
       e.preventDefault();

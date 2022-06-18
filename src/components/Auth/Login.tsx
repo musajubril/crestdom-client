@@ -19,6 +19,9 @@ export default function Login() {
       console.log(decode)
       window.location.href = decode?.account_type==="Admin" ? "/admin" : decode?.account_type==="Student" ? "/student" : "/bursar"
     },
+    onError(){
+      alert("Login Failed")
+    }
   });
   const submitForm = (e: any) => {
     e.preventDefault();

@@ -85,6 +85,9 @@ const RoomGrid = ({rooms, showType}) => {
       setOpen(false)
       // props.history.push("/login", "/login")
     },
+    onError(){
+      alert("Booking Failed")
+    }
   });
   const [roomData, setRoom] = React.useState({
     room_id: null,
