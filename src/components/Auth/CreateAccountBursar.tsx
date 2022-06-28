@@ -2,6 +2,7 @@ import { login } from 'api/apiCall';
 import { SIGN_IN, VERIFY_BURSAR } from 'api/apiUrl';
 import React from 'react'
 import { useMutation } from 'react-query';
+import { Link } from 'react-router-dom';
 import { postRequest } from '../../api/apiCall';
 
 export default function CreateAccountBursar(props) {
@@ -60,6 +61,9 @@ export default function CreateAccountBursar(props) {
         <input onChange={handleChange} type="password" className=" lg:h-11 lg:w-rectangle w-min_rectangle h-7 mx-auto border-gray-400 border-2 placeholder-gray-400 lg:text-sm text-xs pl-4 rounded-lg" placeholder="*******" id="confirm_password" />
       </div>
       <button className="bg-green-500 text-white h-11 mlg:x-auto lg:w-rectangle w-min_rectangle h-7 flex items-center justify-center rounded-lg font-semibold text-sm mb-4 cursor-pointer hover:bg-white hover:text-green-500 transform hover:scale-110 transition-all duration-700 border-2 border-green-500" id="submit" onClick={submitForm} disabled={state.password!==state.confirm_password}>Verify</button>
+      <div className="text-center font-semibold text-sm">
+        Have an account? <Link to="/login" className="text-green-500">Sign In</Link>
+      </div>
       {/* <div className="text-center font-semibold text-sm">
         Are you new here? <span className="text-green-500">Sign Up</span>
       </div> */}

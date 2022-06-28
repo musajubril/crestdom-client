@@ -3,6 +3,7 @@ import { SIGN_IN } from 'api/apiUrl';
 import jwtDecode from 'jwt-decode';
 import React from 'react'
 import { useMutation } from 'react-query';
+import { Link } from 'react-router-dom';
 
 export default function Login() {
   const [state, setState] = React.useState({
@@ -57,7 +58,7 @@ export default function Login() {
       <div className=" mb-6 text-green-500 flex flex-row-reverse font-semibold text-sm cursor-pointer">Forgot Password?</div>
       <div className="bg-green-500 text-white h-11 mlg:x-auto lg:w-rectangle w-min_rectangle h-7 flex items-center justify-center rounded-lg font-semibold text-sm mb-4 cursor-pointer hover:bg-white hover:text-green-500 transform hover:scale-110 transition-all duration-700 border-2 border-green-500" id="submit" onClick={submitForm}>Login</div>
       <div className="text-center font-semibold text-sm">
-        Are you new here? <span className="text-green-500">Sign Up</span>
+        Are you new here? <Link to="/create-account" className="text-green-500">Sign Up</Link>
       </div>
     </form>
   </div>
