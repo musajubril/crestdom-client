@@ -27,7 +27,8 @@ module.exports = {
       purple: colors.violet,
       pink: colors.pink,
       lightBlue: colors.sky,
-      neutral: colors.neutral
+      neutral: colors.neutral,
+      cyan: colors.cyan,
     },
     spacing: {
       px: '1px',
@@ -50,6 +51,7 @@ module.exports = {
       12: '3rem',
       14: '3.5rem',
       16: '4rem',
+      18: '72px',
       20: '5rem',
       24: '6rem',
       28: '7rem',

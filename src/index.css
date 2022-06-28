@@ -10,6 +10,13 @@
     font-family: SSPro;
     src: url(./SourceSansPro-Regular.ttf);
 }
+@font-face {
+    font-family: Dosis;
+    src: url(./Dosis-VariableFont_wght.ttf);
+}
+* {
+    font-family: "Dosis", sans-serif;
+}
 .font-inter {
     font-family: "Inter", sans-serif;
 }
@@ -21,3 +28,7 @@
     height: 508.59px;
     border-radius: 101.922px;
 }
+/* .mx-18 {
+    margin-left: 72px;
+    margin-right: 72px;
+} */
