@@ -6,7 +6,6 @@
 /.pnp
 .pnp.js
 /src/style.css
-/public/style.css
 /src/fonts
 /public/fonts
 # testing
