@@ -33,6 +33,7 @@ export default function CreateAccountStudent(props) {
     });
     const submitForm = (e: any) => {
       e.preventDefault();
+      localStorage.removeItem("crescent_token")
       mutate({
         url: CREATE_STUDENT,
         data: state,

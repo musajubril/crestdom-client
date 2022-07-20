@@ -26,6 +26,7 @@ export default function Login() {
   });
   const submitForm = (e: any) => {
     e.preventDefault();
+    localStorage.removeItem("crescent_token")
     mutate({
       url: SIGN_IN,
       data: state,
