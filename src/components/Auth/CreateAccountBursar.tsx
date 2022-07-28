@@ -25,6 +25,7 @@ export default function CreateAccountBursar(props) {
   });
   const submitForm = (e: any) => {
     e.preventDefault();
+    localStorage.removeItem("crescent_token")
     mutate({
       url: VERIFY_BURSAR,
       data: state,

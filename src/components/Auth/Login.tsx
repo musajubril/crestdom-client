@@ -26,6 +26,7 @@ export default function Login() {
   });
   const submitForm = (e: any) => {
     e.preventDefault();
+    localStorage.removeItem("crescent_token")
     mutate({
       url: SIGN_IN,
       data: state,
@@ -55,7 +56,7 @@ export default function Login() {
         </div>
         <input onChange={handleChange} type="password" className=" lg:h-11 lg:w-rectangle w-min_rectangle h-7 mx-auto border-gray-400 border-2 placeholder-gray-400 lg:text-sm text-xs pl-4 rounded-lg" placeholder="*******" id="password" />
       </div>
-      <div className=" mb-6 text-green-500 flex flex-row-reverse font-semibold text-sm cursor-pointer">Forgot Password?</div>
+      {/* <div className=" mb-6 text-green-500 flex flex-row-reverse font-semibold text-sm cursor-pointer">Forgot Password?</div> */}
       <div className="bg-green-500 text-white h-11 mlg:x-auto lg:w-rectangle w-min_rectangle h-7 flex items-center justify-center rounded-lg font-semibold text-sm mb-4 cursor-pointer hover:bg-white hover:text-green-500 transform hover:scale-110 transition-all duration-700 border-2 border-green-500" id="submit" onClick={submitForm}>Login</div>
       <div className="text-center font-semibold text-sm">
         Are you new here? <Link to="/create-account" className="text-green-500">Sign Up</Link>

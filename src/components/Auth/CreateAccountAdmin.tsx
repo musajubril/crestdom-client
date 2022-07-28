@@ -25,6 +25,7 @@ export default function CreateAccountAdmin(props) {
   });
   const submitForm = (e: any) => {
     e.preventDefault();
+    localStorage.removeItem("crescent_token")
     mutate({
       url: SIGN_UP,
       data: state,

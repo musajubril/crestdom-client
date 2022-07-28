@@ -79,7 +79,7 @@ gender: '',
         {[
             {name: "Hostel Name", stat:book?.hostel_name},
             {name: "Room Number", stat:book?.room_number},
-            {name: "Price", stat:`#${book?.hostel_name}`},
+            {name: "Price", stat:`#${book?.price}`},
             {name: "Verification Status", stat:book?.verified ? "Verified" : "Not Verified"},
             {name: "Bursar Info", stat:book?.send_to_bursar ? "Sent" : "Not Sent"},
             {name: "Hostel Name", stat:book?.hostel_name}

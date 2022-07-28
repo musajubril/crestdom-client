@@ -33,6 +33,7 @@ export default function CreateAccountStudent(props) {
     });
     const submitForm = (e: any) => {
       e.preventDefault();
+      localStorage.removeItem("crescent_token")
       mutate({
         url: CREATE_STUDENT,
         data: state,
@@ -47,7 +48,7 @@ export default function CreateAccountStudent(props) {
   <div className="lg:w-2/5 mx-auto h-full items-center justify-center flex flex-col">
     <img src={require("./Group 4.png")} className="lg:hidden block mt-16" alt="" />
     <h1 className="text-center font-bold text-3xl text-black lg:mb-20 lg:mt-0 mt-10 mb-10">
-      Sign In
+      Create Account
     </h1>
     <form>
       <div className="mb-5 ">
